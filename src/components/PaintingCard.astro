@@ -1,0 +1,90 @@
+---
+interface Props {
+  painting: {
+    id: string;
+    title: string;
+    slug: string;
+    category: string;
+    medium: string;
+    dimensions: string;
+    year: number;
+    status: 'Available' | 'Sold' | 'Reserved' | 'Not for Sale';
+    price?: {
+      displayPrice?: string;
+      hidePrice?: boolean;
+    };
+    image: string;
+    description?: string;
+  };
+}
+
+const { painting } = Astro.props;
+
+const isAvailable = painting.status === 'Available';
+---
+
+<div class="group flex flex-col transition-all duration-300">
+  <!-- Artwork Image Container -->
+  <a
+    href={`/paintings/${painting.slug}`}
+    class="relative block overflow-hidden bg-canvas rounded-sm border border-border-whisper/70 p-2 sm:p-3 shadow-[0_2px_10px_rgba(0,0,0,0.02)] transition-all duration-300 group-hover:shadow-[0_8px_24px_rgba(0,0,0,0.06)] group-hover:border-border-whisper"
+  >
+    <div class="overflow-hidden aspect-[4/5] sm:aspect-[3/4] bg-sand/30 flex items-center justify-center">
+      <img
+        src={painting.image}
+        alt={`${painting.title} by Samridhi — ${painting.medium}`}
+        loading="lazy"
+        class="w-full h-full object-cover transition-transform duration-700 ease-out group-hover:scale-[1.03]"
+      />
+    </div>
+
+    <!-- Status Badge Overlay -->
+    <div class="absolute top-4 right-4">
+      {isAvailable ? (
+        <span class="inline-flex items-center gap-1.5 px-2.5 py-1 text-[11px] font-sans font-medium tracking-wide bg-sage-bg text-sage border border-sage-border rounded-full backdrop-blur-sm shadow-xs">
+          <span class="w-1.5 h-1.5 rounded-full bg-sage animate-pulse" />
+          Available
+        </span>
+      ) : (
+        <span class="inline-flex items-center px-2.5 py-1 text-[11px] font-sans font-medium tracking-wide bg-sand text-slate-umber border border-border-whisper rounded-full backdrop-blur-sm">
+          {painting.status}
+        </span>
+      )}
+    </div>
+  </a>
+
+  <!-- Metadata Details -->
+  <div class="pt-4 pb-2 flex flex-col space-y-1">
+    <div class="flex items-baseline justify-between gap-2">
+      <h3 class="font-serif text-lg sm:text-xl font-medium text-charcoal group-hover:text-terracotta transition-colors">
+        <a href={`/paintings/${painting.slug}`}>
+          {painting.title}
+        </a>
+      </h3>
+      {painting.price?.displayPrice && !painting.price.hidePrice && (
+        <span class="font-sans text-xs sm:text-sm font-semibold text-charcoal">
+          {painting.price.displayPrice}
+        </span>
+      )}
+    </div>
+
+    <p class="font-sans text-xs text-slate-umber tracking-wide">
+      {painting.medium} · {painting.dimensions} · {painting.year}
+    </p>
+
+    <div class="pt-2 flex items-center justify-between">
+      <a
+        href={`/paintings/${painting.slug}`}
+        class="font-sans text-xs uppercase tracking-wider text-slate-umber group-hover:text-terracotta flex items-center gap-1 transition-colors"
+      >
+        <span>View Details</span>
+        <span class="text-terracotta group-hover:translate-x-0.5 transition-transform">→</span>
+      </a>
+      {isAvailable && (
+        <span class="font-sans text-[11px] text-terracotta font-medium">
+          Ready to Ship
+        </span>
+      )}
+    </div>
+  </div>
+</div>

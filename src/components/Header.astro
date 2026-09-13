@@ -1,0 +1,108 @@
+---
+const pathname = new URL(Astro.request.url).pathname;
+
+const navItems = [
+  { name: 'HOME', href: '/' },
+  { name: 'PAINTINGS', href: '/paintings' },
+  { name: 'ILLUSTRATION', href: '/illustration' },
+  { name: 'ABOUT', href: '/about' },
+  { name: 'CONTACT / COMMISSIONS', href: '/contact' }
+];
+
+const isActive = (href: string) => {
+  if (href === '/') {
+    return pathname === '/' || pathname === '';
+  }
+  return pathname.startsWith(href);
+};
+---
+
+<header class="sticky top-0 z-40 bg-linen/95 backdrop-blur-md border-b border-border-whisper transition-all duration-300">
+  <div class="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12">
+    <div class="flex items-center justify-between h-20 sm:h-24">
+      
+      <!-- Brand Logo -->
+      <a href="/" class="group flex flex-col items-start">
+        <span class="font-serif text-2xl sm:text-3xl tracking-widest text-charcoal group-hover:text-terracotta transition-colors uppercase font-medium">
+          Art by Sam
+        </span>
+        <span class="font-sans text-[10px] sm:text-[11px] tracking-[0.25em] text-slate-umber uppercase font-normal -mt-0.5">
+          Samridhi · Studio & Archive
+        </span>
+      </a>
+
+      <!-- Desktop Navigation -->
+      <nav class="hidden md:flex items-center space-x-8 lg:space-x-10">
+        {navItems.map((item) => (
+          <a
+            href={item.href}
+            class={`relative font-sans text-xs tracking-[0.14em] uppercase transition-all py-1 ${
+              isActive(item.href)
+                ? 'text-charcoal font-semibold'
+                : 'text-slate-umber hover:text-charcoal font-medium'
+            }`}
+          >
+            {item.name}
+            {isActive(item.href) && (
+              <span class="absolute bottom-0 left-0 w-full h-[1.5px] bg-terracotta rounded-full" />
+            )}
+          </a>
+        ))}
+      </nav>
+
+      <!-- Right Header Actions (Direct WhatsApp Quick Connect) -->
+      <div class="hidden md:flex items-center">
+        <a
+          href="/contact"
+          class="inline-flex items-center justify-center px-4 py-2 text-xs uppercase tracking-wider font-sans font-medium text-charcoal border border-charcoal/40 rounded hover:bg-charcoal hover:text-linen hover:border-charcoal transition-all duration-200"
+        >
+          Enquire
+        </a>
+      </div>
+
+      <!-- Mobile Menu Button -->
+      <button
+        id="mobile-menu-toggle"
+        type="button"
+        class="md:hidden p-2 text-charcoal hover:text-terracotta focus:outline-none"
+        aria-label="Toggle Navigation Menu"
+      >
+        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path id="menu-icon" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M4 7h16M4 12h16M4 17h16" />
+        </svg>
+      </button>
+
+    </div>
+  </div>
+
+  <!-- Mobile Dropdown Menu -->
+  <div id="mobile-menu" class="hidden md:hidden border-t border-border-whisper bg-linen px-6 py-6 space-y-4">
+    {navItems.map((item) => (
+      <a
+        href={item.href}
+        class={`block font-sans text-sm tracking-wider uppercase py-2 ${
+          isActive(item.href) ? 'text-terracotta font-semibold' : 'text-slate-umber font-medium'
+        }`}
+      >
+        {item.name}
+      </a>
+    ))}
+    <div class="pt-4 border-t border-border-whisper">
+      <a
+        href="/contact"
+        class="block text-center py-2.5 px-4 bg-charcoal text-linen text-xs uppercase tracking-wider rounded font-medium"
+      >
+        Commission / Enquire
+      </a>
+    </div>
+  </div>
+</header>
+
+<script>
+  const toggleBtn = document.getElementById('mobile-menu-toggle');
+  const mobileMenu = document.getElementById('mobile-menu');
+
+  toggleBtn?.addEventListener('click', () => {
+    mobileMenu?.classList.toggle('hidden');
+  });
+</script>

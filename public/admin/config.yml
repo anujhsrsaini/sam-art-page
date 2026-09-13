@@ -1,0 +1,90 @@
+# Sveltia CMS Configuration for Art by Sam
+# Gives Sam a clean, mobile-friendly admin interface to add/edit paintings and illustrations
+
+backend:
+  name: github
+  repo: anujsaini/sam-art-page # Anuj's GitHub repository
+  branch: main
+
+media_folder: "public/images"
+public_folder: "/images"
+
+display_url: "https://anujsaini.github.io/sam-art-page"
+logo_url: ""
+
+collections:
+  - name: "paintings"
+    label: "Paintings Archive"
+    label_singular: "Painting"
+    folder: "src/content/paintings"
+    format: "json"
+    create: true
+    slug: "{{slug}}"
+    fields:
+      - { label: "Artwork ID", name: "id", widget: "string", default: "P-2026-" }
+      - { label: "Artwork Title", name: "title", widget: "string" }
+      - { label: "URL Slug", name: "slug", widget: "string" }
+      - label: "Category"
+        name: "category"
+        widget: "select"
+        options:
+          - "Women / The Girls"
+          - "Figurative"
+          - "Travel & Places"
+          - "Nature / Water"
+          - "Still Life & Everyday Moments"
+          - "New Work"
+      - { label: "Medium", name: "medium", widget: "string", default: "Acrylic on stretched canvas" }
+      - { label: "Dimensions", name: "dimensions", widget: "string", default: "24 × 30 in (61 × 76 cm)" }
+      - { label: "Year", name: "year", widget: "number", value_type: "int", default: 2026 }
+      - label: "Availability Status"
+        name: "status"
+        widget: "select"
+        default: "Available"
+        options:
+          - "Available"
+          - "Sold"
+          - "Reserved"
+          - "Not for Sale"
+      - label: "Price"
+        name: "price"
+        widget: "object"
+        required: false
+        fields:
+          - { label: "Display Price (e.g. ₹35,000)", name: "displayPrice", widget: "string", required: false }
+          - { label: "Hide Price (Price on Request)", name: "hidePrice", widget: "boolean", default: false }
+      - { label: "Primary Artwork Photo", name: "image", widget: "image" }
+      - { label: "Detail / In-Room Photos", name: "detailShots", widget: "list", field: { label: "Photo", widget: "image" }, required: false }
+      - { label: "Inspiration Story / Description", name: "description", widget: "text", required: false }
+      - { label: "Featured on Homepage?", name: "featuredOnHome", widget: "boolean", default: false }
+      - { label: "Display Priority Order (1 = Top)", name: "displayOrder", widget: "number", value_type: "int", default: 10 }
+
+  - name: "illustrations"
+    label: "Illustration Projects"
+    label_singular: "Illustration Project"
+    folder: "src/content/illustrations"
+    format: "json"
+    create: true
+    slug: "{{slug}}"
+    fields:
+      - { label: "Project ID", name: "id", widget: "string", default: "ILL-2026-" }
+      - { label: "Project Title", name: "title", widget: "string" }
+      - { label: "URL Slug", name: "slug", widget: "string" }
+      - label: "Category"
+        name: "category"
+        widget: "select"
+        options:
+          - "WEDDING INVITES"
+          - "PACKAGING"
+          - "BABY ANNOUNCEMENTS"
+          - "PARTY INVITES"
+          - "PERSONAL ILLUSTRATIONS"
+          - "TRAVEL"
+      - { label: "Client or Occasion", name: "clientOrOccasion", widget: "string", required: false }
+      - { label: "Year", name: "year", widget: "number", value_type: "int", default: 2026 }
+      - { label: "Short Story / Concept", name: "shortDescription", widget: "text" }
+      - { label: "Deliverables List", name: "deliverables", widget: "list", field: { label: "Deliverable item", widget: "string" } }
+      - { label: "Cover Image", name: "coverImage", widget: "image" }
+      - { label: "Gallery Images", name: "galleryImages", widget: "list", field: { label: "Photo", widget: "image" }, required: false }
+      - { label: "Featured on Homepage?", name: "featuredOnHome", widget: "boolean", default: false }
+      - { label: "Display Priority Order (1 = Top)", name: "displayOrder", widget: "number", value_type: "int", default: 10 }

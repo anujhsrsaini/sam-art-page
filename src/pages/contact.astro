@@ -1,0 +1,244 @@
+---
+import Layout from '../layouts/Layout.astro';
+---
+
+<Layout
+  title="Contact & Commissions | Art by Sam"
+  description="Enquire about acquiring an original painting, commissioning a custom canvas, or collaborating on bespoke wedding and brand illustration."
+>
+  <div class="max-w-4xl mx-auto px-6 sm:px-8 pt-12 pb-24 space-y-12">
+    
+    <!-- Header -->
+    <div class="text-center max-w-2xl mx-auto space-y-4">
+      <span class="font-sans text-xs uppercase tracking-[0.2em] text-terracotta font-semibold block">
+        Get in Touch
+      </span>
+      <h1 class="font-serif text-4xl sm:text-5xl lg:text-6xl font-medium text-charcoal">
+        Commissions & Inquiries
+      </h1>
+      <p class="font-sans text-sm sm:text-base text-slate-umber leading-relaxed">
+        Whether you’re inquiring about an original painting, a bespoke wedding suite, or a commercial project, please share a few details below and Sam will get back to you within 24–48 hours.
+      </p>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-12 gap-12 items-start">
+      
+      <!-- Left Column: Direct Contact & Info (4 cols) -->
+      <div class="md:col-span-5 space-y-8 p-6 sm:p-8 rounded bg-sand/40 border border-border-whisper">
+        <div class="space-y-3">
+          <h3 class="font-serif text-2xl text-charcoal font-medium">Direct Inquiries</h3>
+          <p class="font-sans text-xs sm:text-sm text-slate-umber leading-relaxed">
+            Prefer a quick direct conversation? Feel free to reach out directly via WhatsApp or email.
+          </p>
+        </div>
+
+        <!-- WhatsApp Direct Card -->
+        <a
+          href="https://wa.me/91XXXXXXXXXX?text=Hi%20Sam!%20I'm%20visiting%20your%20website%20and%20would%20love%20to%20chat%20about%20your%20artwork."
+          target="_blank"
+          rel="noopener noreferrer"
+          class="flex items-center justify-between p-4 bg-linen rounded border border-border-whisper hover:border-terracotta hover:shadow-xs transition-all group"
+        >
+          <div class="flex items-center gap-3">
+            <span class="w-2.5 h-2.5 rounded-full bg-sage" />
+            <div>
+              <p class="font-sans text-xs font-semibold text-charcoal">Chat on WhatsApp</p>
+              <p class="font-sans text-[11px] text-slate-umber">Direct artist response</p>
+            </div>
+          </div>
+          <span class="text-terracotta text-sm group-hover:translate-x-1 transition-transform">→</span>
+        </a>
+
+        <!-- Direct Email -->
+        <div class="space-y-1 font-sans text-xs">
+          <span class="text-slate-umber uppercase tracking-wider block font-semibold">Email</span>
+          <a href="mailto:hello@artbysam.com" class="text-charcoal hover:text-terracotta transition-colors font-medium">
+            hello@artbysam.com
+          </a>
+        </div>
+
+        <!-- Instagram -->
+        <div class="space-y-1 font-sans text-xs">
+          <span class="text-slate-umber uppercase tracking-wider block font-semibold">Instagram</span>
+          <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" class="text-charcoal hover:text-terracotta transition-colors font-medium flex items-center gap-1">
+            <span>@artbysam</span>
+            <span class="text-[10px] text-terracotta">↗</span>
+          </a>
+        </div>
+
+        <!-- Studio & Shipping Notice -->
+        <div class="pt-4 border-t border-border-whisper/80 space-y-2 font-sans text-xs text-slate-umber">
+          <p class="font-semibold text-charcoal">Shipping & Delivery</p>
+          <p>
+            Paintings are professionally packed and shipped insured across India and internationally.
+          </p>
+        </div>
+      </div>
+
+      <!-- Right Column: Inquiry Form (7 cols) -->
+      <div class="md:col-span-7 bg-canvas p-6 sm:p-10 rounded border border-border-whisper shadow-sm">
+        
+        <form
+          action="https://api.web3forms.com/submit"
+          method="POST"
+          id="commission-form"
+          class="space-y-6"
+        >
+          <!-- Replace with Sam's Web3Forms access key -->
+          <input type="hidden" name="access_key" value="YOUR_WEB3FORMS_ACCESS_KEY" />
+          <input type="hidden" name="subject" value="New Commission Inquiry — Art by Sam" />
+          <input type="hidden" name="from_name" value="Art by Sam Studio" />
+
+          <!-- Full Name -->
+          <div class="space-y-1.5">
+            <label for="name" class="block font-sans text-xs uppercase tracking-wider text-charcoal font-semibold">
+              Your Name <span class="text-terracotta">*</span>
+            </label>
+            <input
+              type="text"
+              id="name"
+              name="name"
+              required
+              placeholder="e.g. Maya Sharma"
+              class="w-full px-4 py-3 bg-linen border border-border-whisper rounded text-charcoal text-sm font-sans placeholder:text-stone-muted focus:outline-none focus:border-terracotta focus:ring-1 focus:ring-terracotta transition-all"
+            />
+          </div>
+
+          <!-- Email & Phone/WhatsApp -->
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+            <div class="space-y-1.5">
+              <label for="email" class="block font-sans text-xs uppercase tracking-wider text-charcoal font-semibold">
+                Email Address <span class="text-terracotta">*</span>
+              </label>
+              <input
+                type="email"
+                id="email"
+                name="email"
+                required
+                placeholder="name@example.com"
+                class="w-full px-4 py-3 bg-linen border border-border-whisper rounded text-charcoal text-sm font-sans placeholder:text-stone-muted focus:outline-none focus:border-terracotta focus:ring-1 focus:ring-terracotta transition-all"
+              />
+            </div>
+            <div class="space-y-1.5">
+              <label for="phone" class="block font-sans text-xs uppercase tracking-wider text-charcoal font-semibold">
+                WhatsApp / Phone
+              </label>
+              <input
+                type="tel"
+                id="phone"
+                name="phone"
+                placeholder="+91 98765 43210"
+                class="w-full px-4 py-3 bg-linen border border-border-whisper rounded text-charcoal text-sm font-sans placeholder:text-stone-muted focus:outline-none focus:border-terracotta focus:ring-1 focus:ring-terracotta transition-all"
+              />
+            </div>
+          </div>
+
+          <!-- Project Type -->
+          <div class="space-y-1.5">
+            <label for="project_type" class="block font-sans text-xs uppercase tracking-wider text-charcoal font-semibold">
+              Project Type <span class="text-terracotta">*</span>
+            </label>
+            <select
+              id="project_type"
+              name="project_type"
+              required
+              class="w-full px-4 py-3 bg-linen border border-border-whisper rounded text-charcoal text-sm font-sans focus:outline-none focus:border-terracotta focus:ring-1 focus:ring-terracotta transition-all"
+            >
+              <option value="Original Painting Purchase">Original Painting Acquisition</option>
+              <option value="Custom Canvas Commission">Custom Painting Commission</option>
+              <option value="Wedding / Event Stationery Suite">Wedding / Event Invitation Suite</option>
+              <option value="Baby Announcement">Baby Announcement</option>
+              <option value="Brand & Packaging Illustration">Brand & Packaging Illustration</option>
+              <option value="General Inquiry">General Collaboration / Hello</option>
+            </select>
+          </div>
+
+          <!-- Deadline & Dimensions -->
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+            <div class="space-y-1.5">
+              <label for="deadline" class="block font-sans text-xs uppercase tracking-wider text-charcoal font-semibold">
+                Date Needed By
+              </label>
+              <input
+                type="text"
+                id="deadline"
+                name="deadline"
+                placeholder="e.g. November 2026"
+                class="w-full px-4 py-3 bg-linen border border-border-whisper rounded text-charcoal text-sm font-sans placeholder:text-stone-muted focus:outline-none focus:border-terracotta focus:ring-1 focus:ring-terracotta transition-all"
+              />
+            </div>
+            <div class="space-y-1.5">
+              <label for="budget" class="block font-sans text-xs uppercase tracking-wider text-charcoal font-semibold">
+                Budget Range (Optional)
+              </label>
+              <select
+                id="budget"
+                name="budget"
+                class="w-full px-4 py-3 bg-linen border border-border-whisper rounded text-charcoal text-sm font-sans focus:outline-none focus:border-terracotta focus:ring-1 focus:ring-terracotta transition-all"
+              >
+                <option value="Flexible">Flexible / Discuss with Sam</option>
+                <option value="Under ₹25,000">Under ₹25,000</option>
+                <option value="₹25,000 – ₹50,000">₹25,000 – ₹50,000</option>
+                <option value="₹50,000 – ₹1,00,000">₹50,000 – ₹1,00,000</option>
+                <option value="₹1,00,000+">₹1,00,000+</option>
+              </select>
+            </div>
+          </div>
+
+          <!-- Project Brief -->
+          <div class="space-y-1.5">
+            <label for="message" class="block font-sans text-xs uppercase tracking-wider text-charcoal font-semibold">
+              Project Description / Specific Piece <span class="text-terracotta">*</span>
+            </label>
+            <textarea
+              id="message"
+              name="message"
+              rows="4"
+              required
+              placeholder="Tell Sam about your idea, room dimensions, wedding venue theme, or the specific painting title you're interested in..."
+              class="w-full px-4 py-3 bg-linen border border-border-whisper rounded text-charcoal text-sm font-sans placeholder:text-stone-muted focus:outline-none focus:border-terracotta focus:ring-1 focus:ring-terracotta transition-all"
+            ></textarea>
+          </div>
+
+          <!-- Submit Button -->
+          <button
+            type="submit"
+            class="w-full py-4 bg-charcoal text-linen text-xs uppercase tracking-widest font-sans font-medium rounded hover:bg-terracotta transition-colors duration-300 shadow-sm"
+          >
+            Send Message to Sam
+          </button>
+
+          <p class="text-[11px] font-sans text-stone-muted text-center">
+            Your information is kept strictly private and used solely to respond to your inquiry.
+          </p>
+        </form>
+
+      </div>
+
+    </div>
+
+  </div>
+</Layout>
+
+<script>
+  // Handle URL query parameters to pre-fill the form
+  const params = new URLSearchParams(window.location.search);
+  const artworkTitle = params.get('artwork');
+  const projectType = params.get('type');
+  const messageInput = document.getElementById('message') as HTMLTextAreaElement | null;
+  const projectTypeSelect = document.getElementById('project_type') as HTMLSelectElement | null;
+
+  if (artworkTitle && messageInput) {
+    messageInput.value = `Hi Sam, I would like to inquire about purchasing your original painting "${artworkTitle}".`;
+  }
+
+  if (projectType && projectTypeSelect) {
+    if (projectType.includes('wedding')) {
+      projectTypeSelect.value = 'Wedding / Event Stationery Suite';
+    } else if (projectType.includes('packaging')) {
+      projectTypeSelect.value = 'Brand & Packaging Illustration';
+    } else if (projectType.includes('painting')) {
+      projectTypeSelect.value = 'Original Painting Purchase';
+    }
+  }
+</script>

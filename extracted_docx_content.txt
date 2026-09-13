@@ -1,0 +1,299 @@
+ART BY SAM
+
+Website Direction & Content Structure
+
+A clean, artistic, warm and straightforward online home for Sam’s paintings and illustration work.
+
+1. Core Website Idea
+
+The website should feel like stepping into Sam’s art world: personal, colourful, feminine, playful and artistic, while remaining extremely easy to understand and navigate. The design should never compete with the artwork. The paintings and illustrations are the hero.
+
+The overall principle is: BEAUTIFUL TO LOOK AT + VERY EASY TO USE. Avoid an overly complicated portfolio, excessive text, or too many navigation layers.
+
+2. Primary Navigation
+
+HOME
+
+PAINTINGS
+
+ILLUSTRATION
+
+ABOUT
+
+CONTACT
+
+Optional later addition: SHOP, if originals/prints are sold directly through the website.
+
+3. Homepage Structure
+
+Hero — one strong artwork or a curated rotating selection, with a simple introduction to Art by Sam.
+
+Short artist introduction — a warm, personal paragraph and photograph/studio image.
+
+Featured Paintings — 4–6 selected works with title and basic details.
+
+Illustration — a clean entry point into commissioned and personal illustration work.
+
+Selected Work / Collections — a visual grid showing the breadth of Sam’s work.
+
+About Sam — a short story with a link to the full About page.
+
+Contact / Commission CTA — simple invitation to enquire about a project.
+
+Instagram or studio preview — optional, kept visually minimal.
+
+4. PAINTINGS
+
+Paintings should be presented as an artwork archive rather than a crowded online store. The grid should allow the images to breathe, with enough white/neutral space around each work.
+
+Suggested filters or collections:
+
+All Paintings
+
+Figurative
+
+Women / The Girls
+
+Travel & Places
+
+Nature / Water
+
+Still Life & Everyday Moments
+
+New Work
+
+Available Works
+
+These are starting points, not mandatory categories. The final categories should follow the actual body of work.
+
+5. Individual Painting Page
+
+Each artwork should have its own clean detail page containing:
+
+Artwork title
+
+Large artwork image
+
+Medium
+
+Dimensions / size
+
+Year
+
+Availability — Available / Sold / Not for Sale
+
+Price, if applicable
+
+Short artwork description or story — optional
+
+Enquire / Buy button, where applicable
+
+Related works
+
+Example format: “She Stayed Until Sunset” | Acrylic on canvas | 24 × 30 in | 2026
+
+6. ILLUSTRATION
+
+Illustration should feel like its own creative world within the website. It can showcase both commercial/client work and Sam’s personal illustration practice.
+
+Main illustration categories:
+
+PACKAGING
+
+WEDDING INVITES
+
+BABY ANNOUNCEMENTS
+
+PARTY INVITES
+
+PERSONAL ILLUSTRATIONS
+
+TRAVEL
+
+Potential additional categories as the portfolio grows:
+
+Editorial
+
+Brand Illustrations
+
+Custom Portraits
+
+Stationery
+
+Patterns
+
+Food & Lifestyle
+
+Do not add categories simply to fill the navigation. A category should only appear once there is enough strong work to make it feel intentional.
+
+7. Illustration Project Pages
+
+Each project should tell a very small visual story:
+
+Project title
+
+Client / occasion, where relevant
+
+Type of illustration
+
+Large image gallery
+
+A one- or two-line description
+
+Deliverables or applications — e.g. invitation suite, packaging, stationery
+
+Dimensions or format, where relevant
+
+Year
+
+Enquire about a similar project
+
+8. ABOUT THE ARTIST
+
+The About page should be personal rather than a formal CV. The goal is to let visitors understand the person behind the work and why they should connect with Sam’s art.
+
+Portrait or studio photograph
+
+Short artist statement
+
+The story of becoming an artist / wanting to pursue art full-time
+
+What inspires the work
+
+Mediums and creative practice
+
+A few informal studio/process photographs
+
+Optional press, exhibitions, collaborations or achievements section as these grow
+
+9. CONTACT / COMMISSIONS
+
+Keep the contact experience very simple.
+
+General enquiries
+
+Painting enquiries
+
+Custom illustration enquiries
+
+Wedding / event illustration enquiries
+
+Brand / packaging enquiries
+
+For commissions, a short enquiry form can ask: name, email, project type, date/deadline, brief description, approximate size/quantity, and budget range (optional).
+
+10. Visual & Art Direction
+
+The visual identity should sit between an editorial art portfolio and a charming independent artist studio.
+
+Lots of breathing room and generous margins.
+
+Artwork-led layouts rather than text-heavy sections.
+
+A warm off-white or soft neutral base instead of stark digital white, if it suits the artwork photography.
+
+A restrained but artistic accent palette pulled from Sam’s paintings.
+
+Elegant typography paired with a subtle handwritten or human element.
+
+Small playful details are welcome, but the interface should remain clean.
+
+Use asymmetry sparingly for an editorial/artistic feel.
+
+Avoid excessive animations, gradients, drop shadows, decorative icons, or trendy effects that will date quickly.
+
+11. Typography Direction
+
+Primary typeface: clean, modern sans-serif for navigation, descriptions and practical information.
+
+Secondary typeface: refined serif or expressive display font for major headings and artwork titles.
+
+Optional handwritten accent: use very sparingly for small notes, captions or personal touches.
+
+Artwork titles can be slightly more expressive than functional website text.
+
+12. Image Treatment
+
+Use large, high-resolution artwork photography.
+
+Keep colour reproduction as accurate as possible.
+
+Mix full-bleed hero images with clean gallery grids.
+
+Include occasional process/studio photographs to make the website feel human.
+
+Do not over-frame every artwork; let the paintings occupy the screen.
+
+Maintain consistent cropping rules within each gallery while allowing portrait/landscape artwork to retain its natural proportions.
+
+13. Recommended Site Map
+
+HOME
+
+├── PAINTINGS
+
+│   ├── All Paintings
+
+│   ├── Collections / Categories
+
+│   └── Individual Artwork
+
+├── ILLUSTRATION
+
+│   ├── Packaging
+
+│   ├── Wedding Invites
+
+│   ├── Baby Announcements
+
+│   ├── Party Invites
+
+│   ├── Personal Illustrations
+
+│   ├── Travel
+
+│   └── Individual Projects
+
+├── ABOUT
+
+└── CONTACT / COMMISSIONS
+
+14. What the Website Should Communicate Within 5 Seconds
+
+Who is Sam?
+
+What does she make?
+
+Is this a professional artist?
+
+Can I see more paintings?
+
+Can I commission or work with her?
+
+If a visitor cannot answer those questions quickly, the homepage is doing too much or the navigation is not clear enough.
+
+15. The Overall Mood
+
+Keywords: warm · feminine · artistic · colourful · personal · joyful · editorial · clean · approachable · polished
+
+The website should feel distinctly like Sam rather than like a generic artist template. The strongest differentiator should be the combination of the artwork, the personal story, and the playful visual language—not complicated web design.
+
+16. Future Growth
+
+Online shop for original paintings
+
+Limited-edition prints
+
+Custom portrait / painting commissions
+
+Illustration commission packages
+
+Wedding and event illustration packages
+
+Brand collaborations
+
+Newsletter / new-work announcements
+
+Exhibitions and press
+
+Build the first version so these can be added later without redesigning the entire site.

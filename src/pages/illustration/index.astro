@@ -1,0 +1,126 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import IllustrationCard from '../../components/IllustrationCard.astro';
+import { getCollection } from 'astro:content';
+
+const allIllustrations = await getCollection('illustrations');
+const sortedIllustrations = allIllustrations.sort(
+  (a, b) => a.data.displayOrder - b.data.displayOrder
+);
+
+const categories = [
+  'All Projects',
+  'WEDDING INVITES',
+  'PACKAGING',
+  'BABY ANNOUNCEMENTS',
+  'TRAVEL',
+  'PERSONAL ILLUSTRATIONS'
+];
+---
+
+<Layout
+  title="Illustration Projects & Bespoke Stationery | Art by Sam"
+  description="Explore commercial packaging, luxury wedding invitation suites, baby announcements, and travel illustration projects by Samridhi."
+>
+  <div class="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12 pt-12 pb-24">
+    
+    <!-- Header -->
+    <div class="text-center max-w-3xl mx-auto mb-12 sm:mb-16 space-y-4">
+      <span class="font-sans text-xs uppercase tracking-[0.2em] text-terracotta font-semibold block">
+        Bespoke & Commercial
+      </span>
+      <h1 class="font-serif text-4xl sm:text-5xl lg:text-6xl font-medium text-charcoal">
+        Illustration
+      </h1>
+      <p class="font-sans text-sm sm:text-base text-slate-umber leading-relaxed max-w-xl mx-auto">
+        A world of custom illustration for memorable occasions and thoughtful brands. Specializing in luxury wedding suites, botanical packaging, and personal storytelling keepsakes.
+      </p>
+    </div>
+
+    <!-- Category Filter Bar -->
+    <div class="sticky top-20 sm:top-24 z-30 bg-linen/95 backdrop-blur-md py-4 mb-12 border-y border-border-whisper">
+      <div class="flex items-center gap-2 overflow-x-auto no-scrollbar scroll-smooth pb-1 text-xs font-sans tracking-wider">
+        {categories.map((cat, idx) => (
+          <button
+            type="button"
+            data-filter={cat}
+            class={`ill-filter-btn whitespace-nowrap px-4 py-2 rounded-full border transition-all duration-200 cursor-pointer ${
+              idx === 0
+                ? 'active bg-charcoal text-linen border-charcoal font-medium'
+                : 'bg-sand/60 text-slate-umber border-border-whisper/80 hover:border-charcoal hover:text-charcoal'
+            }`}
+          >
+            {cat}
+          </button>
+        ))}
+      </div>
+    </div>
+
+    <!-- Illustration Grid -->
+    <div id="illustrations-grid" class="grid grid-cols-1 md:grid-cols-2 gap-10 sm:gap-12">
+      {sortedIllustrations.map((project) => (
+        <div class="illustration-item" data-category={project.data.category}>
+          <IllustrationCard project={project.data} />
+        </div>
+      ))}
+    </div>
+
+    <!-- Commission CTA Box -->
+    <div class="mt-24 p-8 sm:p-12 rounded bg-sand/50 border border-border-whisper text-center max-w-3xl mx-auto space-y-4">
+      <span class="font-sans text-xs uppercase tracking-widest text-terracotta font-semibold">
+        Custom Inquiries
+      </span>
+      <h3 class="font-serif text-2xl sm:text-3xl text-charcoal font-medium">
+        Planning a wedding or creating a brand identity?
+      </h3>
+      <p class="font-sans text-xs sm:text-sm text-slate-umber max-w-lg mx-auto leading-relaxed">
+        From custom illustrated venue maps to full packaging suites, Sam collaborates with couples and independent brands across the world.
+      </p>
+      <div class="pt-2 flex flex-col sm:flex-row items-center justify-center gap-4">
+        <a
+          href="/contact?type=wedding"
+          class="px-6 py-3 bg-charcoal text-linen text-xs uppercase tracking-widest font-sans font-medium rounded hover:bg-terracotta transition-colors"
+        >
+          Enquire About Wedding Invites
+        </a>
+        <a
+          href="/contact?type=packaging"
+          class="px-6 py-3 border border-charcoal/30 text-charcoal text-xs uppercase tracking-widest font-sans font-medium rounded hover:bg-sand transition-colors"
+        >
+          Brand & Packaging Inquiries
+        </a>
+      </div>
+    </div>
+
+  </div>
+</Layout>
+
+<script>
+  const buttons = document.querySelectorAll<HTMLButtonElement>('.ill-filter-btn');
+  const items = document.querySelectorAll<HTMLElement>('.illustration-item');
+
+  buttons.forEach((btn) => {
+    btn.addEventListener('click', () => {
+      const selected = btn.getAttribute('data-filter') || 'All Projects';
+
+      buttons.forEach((b) => {
+        if (b === btn) {
+          b.classList.add('bg-charcoal', 'text-linen', 'border-charcoal', 'font-medium');
+          b.classList.remove('bg-sand/60', 'text-slate-umber');
+        } else {
+          b.classList.remove('bg-charcoal', 'text-linen', 'border-charcoal', 'font-medium');
+          b.classList.add('bg-sand/60', 'text-slate-umber');
+        }
+      });
+
+      items.forEach((item) => {
+        const cat = item.getAttribute('data-category') || '';
+        if (selected === 'All Projects' || cat === selected) {
+          item.style.display = 'block';
+        } else {
+          item.style.display = 'none';
+        }
+      });
+    });
+  });
+</script>

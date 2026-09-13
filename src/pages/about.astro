@@ -1,0 +1,133 @@
+---
+import Layout from '../layouts/Layout.astro';
+---
+
+<Layout
+  title="About Samridhi | Art by Sam"
+  description="Learn about Samridhi (Sam), an independent artist and illustrator creating original paintings and bespoke stationery inspired by everyday moments."
+>
+  <div class="max-w-4xl mx-auto px-6 sm:px-8 pt-12 pb-24 space-y-16">
+    
+    <!-- Hero Introduction -->
+    <div class="space-y-6 text-center">
+      <span class="font-sans text-xs uppercase tracking-[0.2em] text-terracotta font-semibold block">
+        The Artist & Studio
+      </span>
+      <h1 class="font-serif text-4xl sm:text-5xl lg:text-6xl font-medium text-charcoal leading-tight">
+        Behind the Canvas: <br class="hidden sm:inline" />Meet Samridhi
+      </h1>
+      <p class="font-hand text-2xl text-slate-umber">
+        "Creating artwork that feels like stepping into a warm, sunlit afternoon."
+      </p>
+    </div>
+
+    <!-- Main Studio Portrait -->
+    <div class="bg-canvas p-3 sm:p-5 rounded border border-border-whisper shadow-sm">
+      <div class="overflow-hidden bg-sand/30 aspect-[16/10] sm:aspect-[16/9]">
+        <img
+          src="https://images.unsplash.com/photo-1513364776144-60967b0f800f?auto=format&fit=crop&w=1600&q=85"
+          alt="Samridhi in her art studio"
+          class="w-full h-full object-cover"
+        />
+      </div>
+      <p class="font-sans text-xs text-stone-muted text-center pt-3 italic">
+        Sam at her easel, mixing pigments in natural morning light.
+      </p>
+    </div>
+
+    <!-- Artist Narrative / Story -->
+    <div class="prose prose-stone max-w-none space-y-6 font-sans text-slate-umber text-base leading-relaxed">
+      <h2 class="font-serif text-2xl sm:text-3xl text-charcoal font-medium">
+        The Journey of Art by Sam
+      </h2>
+      <p>
+        Art by Sam began not as a commercial brand, but as an intimate sanctuary. Drawn to color, texture, and the expressive possibilities of paint from an early age, Samridhi found herself constantly returning to the canvas to make sense of the world’s quietest, most poignant moments.
+      </p>
+      <p>
+        The decision to pursue art full-time was rooted in a simple conviction: art shouldn’t merely hang passively on distant walls—it should be a living, breathing companion in everyday life. Whether it’s an original acrylic painting anchoring a sunlit living room, or a hand-painted wedding invitation that family members treasure for decades, art connects us to what truly matters.
+      </p>
+    </div>
+
+    <!-- Inspiration & Mediums Grid -->
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-8 pt-4">
+      <div class="p-6 rounded bg-sand/40 border border-border-whisper space-y-3">
+        <h3 class="font-serif text-xl text-charcoal font-medium">
+          What Inspires the Work
+        </h3>
+        <p class="font-sans text-xs sm:text-sm text-slate-umber leading-relaxed">
+          Warm Indian architecture, the gentle light filtering through terracotta courtyards, quiet solitary rituals like reading tea leaves or slicing summer figs, and the poised, timeless energy of women navigating life with poise and joy.
+        </p>
+      </div>
+
+      <div class="p-6 rounded bg-sand/40 border border-border-whisper space-y-3">
+        <h3 class="font-serif text-xl text-charcoal font-medium">
+          Mediums & Creative Practice
+        </h3>
+        <p class="font-sans text-xs sm:text-sm text-slate-umber leading-relaxed">
+          Primarily heavy-body acrylics, cold wax, and gouache on stretched cotton canvas and Belgian linen. For bespoke illustration suites, Sam blends hand-painted watercolor textures with digital vector precision, printed on 300gsm deckle-edged archival papers.
+        </p>
+      </div>
+    </div>
+
+    <!-- Studio Snapshots Grid -->
+    <div class="space-y-4 pt-4">
+      <h2 class="font-serif text-2xl text-charcoal font-medium text-center">
+        Studio Vignettes
+      </h2>
+      <div class="grid grid-cols-1 sm:grid-cols-3 gap-6">
+        <div class="bg-canvas p-2 rounded border border-border-whisper">
+          <img
+            src="https://images.unsplash.com/photo-1547891654-e66ed7ebb968?auto=format&fit=crop&w=600&q=80"
+            alt="Easel study"
+            class="w-full aspect-[4/5] object-cover"
+            loading="lazy"
+          />
+          <p class="font-sans text-[11px] text-stone-muted text-center pt-2">Easel trials & texture</p>
+        </div>
+        <div class="bg-canvas p-2 rounded border border-border-whisper">
+          <img
+            src="https://images.unsplash.com/photo-1513519245088-0e12902e5a38?auto=format&fit=crop&w=600&q=80"
+            alt="Stationery flat lay"
+            class="w-full aspect-[4/5] object-cover"
+            loading="lazy"
+          />
+          <p class="font-sans text-[11px] text-stone-muted text-center pt-2">Custom invitation proofs</p>
+        </div>
+        <div class="bg-canvas p-2 rounded border border-border-whisper">
+          <img
+            src="https://images.unsplash.com/photo-1579783902614-a3fb3927b675?auto=format&fit=crop&w=600&q=80"
+            alt="Finished canvas details"
+            class="w-full aspect-[4/5] object-cover"
+            loading="lazy"
+          />
+          <p class="font-sans text-[11px] text-stone-muted text-center pt-2">Vibrant acrylic details</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- CTA Section -->
+    <div class="p-8 sm:p-12 rounded bg-sand/60 border border-border-whisper text-center space-y-4">
+      <h3 class="font-serif text-2xl sm:text-3xl text-charcoal font-medium">
+        Let’s Work Together
+      </h3>
+      <p class="font-sans text-xs sm:text-sm text-slate-umber max-w-md mx-auto leading-relaxed">
+        I am always open to painting commissions, custom invitation suites, and creative brand collaborations.
+      </p>
+      <div class="pt-2 flex flex-col sm:flex-row items-center justify-center gap-4">
+        <a
+          href="/contact"
+          class="px-8 py-3.5 bg-charcoal text-linen text-xs uppercase tracking-widest font-sans font-medium rounded hover:bg-terracotta transition-colors shadow-sm"
+        >
+          Get in Touch with Sam
+        </a>
+        <a
+          href="/paintings"
+          class="px-6 py-3.5 border border-charcoal/30 text-charcoal text-xs uppercase tracking-widest font-sans font-medium rounded hover:bg-sand transition-colors"
+        >
+          Browse Current Paintings
+        </a>
+      </div>
+    </div>
+
+  </div>
+</Layout>

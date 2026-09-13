@@ -1,0 +1,275 @@
+---
+import Layout from '../layouts/Layout.astro';
+import PaintingCard from '../components/PaintingCard.astro';
+import IllustrationCard from '../components/IllustrationCard.astro';
+import { getCollection } from 'astro:content';
+
+const allPaintings = await getCollection('paintings');
+const featuredPaintings = allPaintings
+  .filter((p) => p.data.featuredOnHome)
+  .sort((a, b) => a.data.displayOrder - b.data.displayOrder);
+
+const allIllustrations = await getCollection('illustrations');
+const featuredIllustrations = allIllustrations
+  .filter((i) => i.data.featuredOnHome)
+  .sort((a, b) => a.data.displayOrder - b.data.displayOrder);
+---
+
+<Layout
+  title="Art by Sam | Original Paintings & Bespoke Illustration"
+  description="Step into Sam's art world: personal, colourful, feminine and artistic paintings & bespoke illustrations for collectors and brands."
+>
+  <!-- 1. HERO SECTION -->
+  <section class="relative pt-12 pb-20 sm:pt-16 sm:pb-28 overflow-hidden">
+    <div class="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12">
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center">
+        
+        <!-- Left Hero Copy -->
+        <div class="lg:col-span-5 space-y-6 sm:space-y-8">
+          <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-sand text-slate-umber text-xs font-sans tracking-widest uppercase">
+            <span class="w-2 h-2 rounded-full bg-terracotta" />
+            Original Paintings & Bespoke Illustration
+          </div>
+
+          <h1 class="font-serif text-4xl sm:text-5xl lg:text-6xl font-medium tracking-tight text-charcoal leading-[1.12]">
+            Art inspired by the warmth of ordinary moments.
+          </h1>
+
+          <p class="font-sans text-base sm:text-lg text-slate-umber leading-relaxed max-w-md">
+            Welcome to my creative studio. Here you’ll find original canvas paintings with rich textures, alongside bespoke illustrations for weddings, packaging, and celebrations.
+          </p>
+
+          <div class="flex flex-col sm:flex-row items-stretch sm:items-center gap-4 pt-2">
+            <a
+              href="/paintings"
+              class="inline-flex justify-center items-center px-7 py-3.5 bg-charcoal text-linen text-xs uppercase tracking-widest font-sans font-medium rounded hover:bg-terracotta transition-colors duration-300 shadow-sm"
+            >
+              Explore Paintings Archive
+            </a>
+            <a
+              href="/illustration"
+              class="inline-flex justify-center items-center px-7 py-3.5 border border-charcoal/30 text-charcoal text-xs uppercase tracking-widest font-sans font-medium rounded hover:bg-sand transition-colors duration-300"
+            >
+              Illustration Work
+            </a>
+          </div>
+        </div>
+
+        <!-- Right Hero Visual (Featured Hero Artwork) -->
+        <div class="lg:col-span-7">
+          <div class="relative bg-canvas p-4 sm:p-6 rounded border border-border-whisper shadow-[0_10px_35px_rgba(0,0,0,0.04)]">
+            <div class="overflow-hidden aspect-[4/3] sm:aspect-[16/11] bg-sand/30">
+              <img
+                src="https://images.unsplash.com/photo-1579783900882-c0d3dad7b119?auto=format&fit=crop&w=1600&q=85"
+                alt="She Stayed Until Sunset — Original Painting by Samridhi"
+                class="w-full h-full object-cover"
+                loading="eager"
+              />
+            </div>
+            <div class="mt-4 flex flex-col sm:flex-row sm:items-center justify-between text-xs font-sans text-slate-umber gap-2">
+              <div>
+                <span class="font-serif text-base text-charcoal font-medium">She Stayed Until Sunset</span>
+                <span class="mx-2">·</span>
+                <span>Acrylic on canvas, 24 × 30 in</span>
+              </div>
+              <a href="/paintings/she-stayed-until-sunset" class="text-terracotta hover:underline font-medium">
+                View Artwork Details →
+              </a>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- 2. SHORT ARTIST INTRODUCTION -->
+  <section class="py-16 sm:py-24 bg-sand/40 border-y border-border-whisper">
+    <div class="max-w-4xl mx-auto px-6 sm:px-8 text-center space-y-6">
+      <div class="w-20 h-20 sm:w-24 sm:h-24 mx-auto rounded-full overflow-hidden border-2 border-linen shadow-md">
+        <img
+          src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=400&q=80"
+          alt="Samridhi (Sam) in her studio"
+          class="w-full h-full object-cover"
+        />
+      </div>
+
+      <span class="font-sans text-xs uppercase tracking-[0.2em] text-slate-umber font-semibold block">
+        Meet the Artist
+      </span>
+
+      <h2 class="font-serif text-3xl sm:text-4xl text-charcoal font-medium leading-snug">
+        “I paint to capture the gentle, luminous fragments of days we wish we could stay in forever.”
+      </h2>
+
+      <p class="font-sans text-sm sm:text-base text-slate-umber max-w-2xl mx-auto leading-relaxed">
+        Hi, I’m Samridhi (Sam) — an artist and illustrator based in India. My work revolves around feminine figures, sun-drenched travel memories, and the quiet beauty of ordinary life. Every canvas is layered with intuitive brushwork and honest colour.
+      </p>
+
+      <div class="pt-2">
+        <a
+          href="/about"
+          class="font-sans text-xs uppercase tracking-widest text-charcoal hover:text-terracotta font-semibold border-b border-charcoal/30 hover:border-terracotta pb-1 transition-colors"
+        >
+          Read My Story & Studio Practice →
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- 3. FEATURED PAINTINGS (ARCHIVE PREVIEW) -->
+  <section class="py-20 sm:py-28">
+    <div class="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12">
+      
+      <!-- Section Header -->
+      <div class="flex flex-col sm:flex-row sm:items-end justify-between mb-12 sm:mb-16 gap-4">
+        <div>
+          <span class="font-sans text-xs uppercase tracking-widest text-terracotta font-semibold block mb-2">
+            Fine Art
+          </span>
+          <h2 class="font-serif text-3xl sm:text-4xl lg:text-5xl text-charcoal font-medium">
+            Featured Paintings
+          </h2>
+        </div>
+        <a
+          href="/paintings"
+          class="font-sans text-xs uppercase tracking-widest text-charcoal hover:text-terracotta font-medium flex items-center gap-1.5 transition-colors"
+        >
+          <span>View All Paintings Archive</span>
+          <span>→</span>
+        </a>
+      </div>
+
+      <!-- Paintings Grid (Breathing room architecture) -->
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10 sm:gap-12">
+        {featuredPaintings.slice(0, 6).map((painting) => (
+          <PaintingCard painting={painting.data} />
+        ))}
+      </div>
+
+      <div class="mt-16 text-center">
+        <a
+          href="/paintings"
+          class="inline-flex items-center justify-center px-8 py-3.5 border border-charcoal text-charcoal hover:bg-charcoal hover:text-linen text-xs uppercase tracking-widest font-sans font-medium rounded transition-all duration-300"
+        >
+          Explore All Available & Archived Works ({allPaintings.length})
+        </a>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- 4. ILLUSTRATION SHOWCASE ENTRYWAY -->
+  <section class="py-20 sm:py-28 bg-sand/30 border-t border-border-whisper">
+    <div class="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12">
+      
+      <div class="flex flex-col sm:flex-row sm:items-end justify-between mb-12 sm:mb-16 gap-4">
+        <div>
+          <span class="font-sans text-xs uppercase tracking-widest text-terracotta font-semibold block mb-2">
+            Bespoke & Commercial
+          </span>
+          <h2 class="font-serif text-3xl sm:text-4xl lg:text-5xl text-charcoal font-medium">
+            Illustration Projects
+          </h2>
+          <p class="font-sans text-sm text-slate-umber mt-2 max-w-xl">
+            Custom stationery suites, packaging illustration, and celebration keepsakes crafted with care.
+          </p>
+        </div>
+        <a
+          href="/illustration"
+          class="font-sans text-xs uppercase tracking-widest text-charcoal hover:text-terracotta font-medium flex items-center gap-1.5 transition-colors"
+        >
+          <span>Explore All Categories</span>
+          <span>→</span>
+        </a>
+      </div>
+
+      <!-- Illustration Grid -->
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-10 sm:gap-12">
+        {featuredIllustrations.map((project) => (
+          <IllustrationCard project={project.data} />
+        ))}
+      </div>
+
+    </div>
+  </section>
+
+  <!-- 5. STUDIO & PROCESS SNAPSHOT -->
+  <section class="py-20 sm:py-24">
+    <div class="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12">
+      <div class="text-center max-w-2xl mx-auto mb-12">
+        <span class="font-hand text-2xl text-terracotta block mb-1">From the easel</span>
+        <h2 class="font-serif text-3xl sm:text-4xl text-charcoal font-medium">
+          Inside the Creative Process
+        </h2>
+        <p class="font-sans text-xs sm:text-sm text-slate-umber mt-3">
+          Behind every canvas are countless colour trials, morning sunlight, and tactile layers of paint.
+        </p>
+      </div>
+
+      <div class="grid grid-cols-1 sm:grid-cols-3 gap-6 sm:gap-8">
+        <div class="overflow-hidden rounded-sm bg-canvas border border-border-whisper p-2">
+          <img
+            src="https://images.unsplash.com/photo-1513364776144-60967b0f800f?auto=format&fit=crop&w=600&q=80"
+            alt="Mixing acrylic paints on palette"
+            class="w-full aspect-[4/5] object-cover"
+            loading="lazy"
+          />
+          <p class="font-sans text-[11px] text-slate-umber text-center pt-2">Pigment & palette mixing</p>
+        </div>
+
+        <div class="overflow-hidden rounded-sm bg-canvas border border-border-whisper p-2">
+          <img
+            src="https://images.unsplash.com/photo-1547891654-e66ed7ebb968?auto=format&fit=crop&w=600&q=80"
+            alt="Canvas work in progress on wooden easel"
+            class="w-full aspect-[4/5] object-cover"
+            loading="lazy"
+          />
+          <p class="font-sans text-[11px] text-slate-umber text-center pt-2">Layers in progress on easel</p>
+        </div>
+
+        <div class="overflow-hidden rounded-sm bg-canvas border border-border-whisper p-2">
+          <img
+            src="https://images.unsplash.com/photo-1502082553048-f009c37129b9?auto=format&fit=crop&w=600&q=80"
+            alt="Natural light and floral inspiration"
+            class="w-full aspect-[4/5] object-cover"
+            loading="lazy"
+          />
+          <p class="font-sans text-[11px] text-slate-umber text-center pt-2">Botanical & light studies</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 6. COMMISSION & CONTACT INVITATION BANNER -->
+  <section class="py-16 sm:py-20 bg-sand/60 border-t border-border-whisper">
+    <div class="max-w-4xl mx-auto px-6 sm:px-8 text-center space-y-6">
+      <span class="font-sans text-xs uppercase tracking-widest text-terracotta font-semibold">
+        Commissions & Collaborations
+      </span>
+      <h2 class="font-serif text-3xl sm:text-5xl text-charcoal font-medium">
+        Have a special piece or project in mind?
+      </h2>
+      <p class="font-sans text-sm sm:text-base text-slate-umber max-w-xl mx-auto leading-relaxed">
+        Whether you’re seeking a custom canvas painting for your home or bespoke stationery for your wedding, I’d love to bring your vision to life.
+      </p>
+      <div class="pt-4 flex flex-col sm:flex-row items-center justify-center gap-4">
+        <a
+          href="/contact"
+          class="inline-flex justify-center items-center px-8 py-3.5 bg-charcoal text-linen text-xs uppercase tracking-widest font-sans font-medium rounded hover:bg-terracotta transition-colors duration-300 shadow-sm w-full sm:w-auto"
+        >
+          Enquire About a Commission
+        </a>
+        <a
+          href="https://wa.me/91XXXXXXXXXX?text=Hi%20Sam!%20I%20love%20your%20artwork%20and%20wanted%20to%20chat%20about%20a%20potential%20commission."
+          target="_blank"
+          rel="noopener noreferrer"
+          class="inline-flex justify-center items-center px-6 py-3.5 border border-charcoal/40 text-charcoal text-xs uppercase tracking-widest font-sans font-medium rounded hover:bg-sand transition-colors duration-300 w-full sm:w-auto gap-2"
+        >
+          <span>Chat on WhatsApp</span>
+          <span class="text-terracotta">↗</span>
+        </a>
+      </div>
+    </div>
+  </section>
+</Layout>

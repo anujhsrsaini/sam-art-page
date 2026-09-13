@@ -1,0 +1,135 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import { getCollection, type CollectionEntry } from 'astro:content';
+
+export async function getStaticPaths() {
+  const illustrations = await getCollection('illustrations');
+  return illustrations.map((project) => ({
+    params: { slug: project.data.slug },
+    props: { project },
+  }));
+}
+
+interface Props {
+  project: CollectionEntry<'illustrations'>;
+}
+
+const { project } = Astro.props;
+const data = project.data;
+---
+
+<Layout
+  title={`${data.title} | Illustration | Art by Sam`}
+  description={`${data.title} — ${data.shortDescription}`}
+  image={data.coverImage}
+>
+  <div class="max-w-5xl mx-auto px-6 sm:px-8 lg:px-12 pt-8 pb-24">
+    
+    <!-- Breadcrumb Navigation -->
+    <nav class="flex items-center space-x-2 text-xs font-sans text-slate-umber mb-8">
+      <a href="/" class="hover:text-terracotta transition-colors">Home</a>
+      <span>/</span>
+      <a href="/illustration" class="hover:text-terracotta transition-colors">Illustration</a>
+      <span>/</span>
+      <span class="text-charcoal font-medium truncate">{data.title}</span>
+    </nav>
+
+    <!-- Case Study Header -->
+    <div class="space-y-4 mb-12">
+      <span class="inline-flex items-center px-3 py-1 text-xs font-sans font-medium tracking-widest uppercase bg-sand text-slate-umber border border-border-whisper rounded-full">
+        {data.category}
+      </span>
+      <h1 class="font-serif text-3xl sm:text-4xl lg:text-5xl font-medium text-charcoal leading-tight">
+        {data.title}
+      </h1>
+      {data.clientOrOccasion && (
+        <p class="font-sans text-sm text-slate-umber italic">
+          Occasion / Client: {data.clientOrOccasion} · {data.year}
+        </p>
+      )}
+    </div>
+
+    <!-- Overview & Deliverables Card -->
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-8 p-6 sm:p-8 rounded bg-sand/40 border border-border-whisper mb-12">
+      <div class="md:col-span-2 space-y-2">
+        <h3 class="font-sans text-xs uppercase tracking-widest text-charcoal font-semibold">
+          Project Story
+        </h3>
+        <p class="font-sans text-sm text-slate-umber leading-relaxed">
+          {data.shortDescription}
+        </p>
+      </div>
+      <div class="space-y-2">
+        <h3 class="font-sans text-xs uppercase tracking-widest text-charcoal font-semibold">
+          Deliverables & Scope
+        </h3>
+        <ul class="space-y-1 text-xs font-sans text-slate-umber">
+          {data.deliverables.map((item) => (
+            <li class="flex items-center gap-2">
+              <span class="text-terracotta">✦</span>
+              <span>{item}</span>
+            </li>
+          ))}
+        </ul>
+      </div>
+    </div>
+
+    <!-- Main Cover Image -->
+    <div class="bg-canvas p-3 sm:p-5 rounded border border-border-whisper shadow-sm mb-12">
+      <div class="overflow-hidden bg-sand/20 aspect-[16/10] flex items-center justify-center">
+        <img
+          src={data.coverImage}
+          alt={`${data.title} Cover`}
+          class="w-full h-full object-cover"
+        />
+      </div>
+    </div>
+
+    <!-- Additional Gallery Mosaic -->
+    {data.galleryImages && data.galleryImages.length > 0 && (
+      <div class="space-y-8 mb-16">
+        <h2 class="font-serif text-2xl text-charcoal font-medium text-center">
+          Project Details & Process
+        </h2>
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-8">
+          {data.galleryImages.map((imgUrl, idx) => (
+            <div class="bg-canvas p-3 rounded border border-border-whisper shadow-xs">
+              <img
+                src={imgUrl}
+                alt={`${data.title} detail ${idx + 1}`}
+                class="w-full aspect-[4/3] object-cover"
+                loading="lazy"
+              />
+            </div>
+          ))}
+        </div>
+      </div>
+    )}
+
+    <!-- Contextual Commission Callout -->
+    <div class="p-8 sm:p-12 rounded bg-sand/60 border border-border-whisper text-center space-y-4 mt-16">
+      <span class="font-hand text-2xl text-terracotta">Let's create together</span>
+      <h3 class="font-serif text-2xl sm:text-3xl text-charcoal font-medium">
+        Interested in a custom project like this?
+      </h3>
+      <p class="font-sans text-xs sm:text-sm text-slate-umber max-w-md mx-auto">
+        Sam collaborates on custom invitation suites, stationery, packaging, and commercial illustration worldwide.
+      </p>
+      <div class="pt-4 flex flex-col sm:flex-row items-center justify-center gap-4">
+        <a
+          href={`/contact?type=${encodeURIComponent(data.category.toLowerCase())}&project=${encodeURIComponent(data.title)}`}
+          class="px-8 py-3.5 bg-charcoal text-linen text-xs uppercase tracking-widest font-sans font-medium rounded hover:bg-terracotta transition-colors shadow-sm"
+        >
+          Enquire About a Similar Project
+        </a>
+        <a
+          href="/illustration"
+          class="px-6 py-3.5 border border-charcoal/30 text-charcoal text-xs uppercase tracking-widest font-sans font-medium rounded hover:bg-sand transition-colors"
+        >
+          ← Back to Illustration Showcase
+        </a>
+      </div>
+    </div>
+
+  </div>
+</Layout>

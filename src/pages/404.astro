@@ -1,0 +1,32 @@
+---
+import Layout from '../layouts/Layout.astro';
+---
+
+<Layout
+  title="Artwork Not Found | Art by Sam"
+  description="The requested artwork or page could not be found."
+>
+  <div class="max-w-2xl mx-auto px-6 py-32 text-center space-y-6">
+    <span class="font-hand text-3xl text-terracotta block">Page Not Found</span>
+    <h1 class="font-serif text-4xl sm:text-5xl font-medium text-charcoal">
+      Looking for an Artwork?
+    </h1>
+    <p class="font-sans text-sm text-slate-umber max-w-md mx-auto leading-relaxed">
+      The piece or page you’re looking for may have been archived, renamed, or moved. Let’s guide you back to Sam's current collection.
+    </p>
+    <div class="pt-4 flex flex-col sm:flex-row items-center justify-center gap-4">
+      <a
+        href="/paintings"
+        class="px-6 py-3 bg-charcoal text-linen text-xs uppercase tracking-widest font-sans font-medium rounded hover:bg-terracotta transition-colors"
+      >
+        Explore Paintings Archive
+      </a>
+      <a
+        href="/"
+        class="px-6 py-3 border border-charcoal/30 text-charcoal text-xs uppercase tracking-widest font-sans font-medium rounded hover:bg-sand transition-colors"
+      >
+        Return to Home
+      </a>
+    </div>
+  </div>
+</Layout>

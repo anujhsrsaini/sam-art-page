@@ -1,0 +1,21 @@
+{
+  "id": "P-2026-001",
+  "title": "She Stayed Until Sunset",
+  "slug": "she-stayed-until-sunset",
+  "category": "Women / The Girls",
+  "medium": "Acrylic on stretched canvas",
+  "dimensions": "24 × 30 in (61 × 76 cm)",
+  "year": 2026,
+  "status": "Available",
+  "price": {
+    "displayPrice": "₹42,000",
+    "hidePrice": false
+  },
+  "image": "https://images.unsplash.com/photo-1579783900882-c0d3dad7b119?auto=format&fit=crop&w=1200&q=80",
+  "detailShots": [
+    "https://images.unsplash.com/photo-1579783902614-a3fb3927b675?auto=format&fit=crop&w=800&q=80"
+  ],
+  "description": "Captured in the quiet golden hour where amber light softens the contours of memory. Painted with expressive textured layers of terracotta, rose madder, and warm ochre.",
+  "featuredOnHome": true,
+  "displayOrder": 1
+}

@@ -1,0 +1,186 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import PaintingCard from '../../components/PaintingCard.astro';
+import { getCollection } from 'astro:content';
+
+const allPaintings = await getCollection('paintings');
+const sortedPaintings = allPaintings.sort(
+  (a, b) => a.data.displayOrder - b.data.displayOrder
+);
+
+// Collect unique categories
+const categories = [
+  'All Paintings',
+  'Available Works',
+  'Women / The Girls',
+  'Figurative',
+  'Travel & Places',
+  'Nature / Water',
+  'Still Life & Everyday Moments',
+  'New Work'
+];
+---
+
+<Layout
+  title="Paintings Archive | Art by Sam"
+  description="Explore the complete fine art archive of original canvas paintings by Samridhi. Acrylic, oil, and mixed media works available for acquisition."
+>
+  <div class="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12 pt-12 pb-24">
+    
+    <!-- Header -->
+    <div class="text-center max-w-3xl mx-auto mb-12 sm:mb-16 space-y-4">
+      <span class="font-sans text-xs uppercase tracking-[0.2em] text-terracotta font-semibold block">
+        Archive & Collection
+      </span>
+      <h1 class="font-serif text-4xl sm:text-5xl lg:text-6xl font-medium text-charcoal">
+        Paintings
+      </h1>
+      <p class="font-sans text-sm sm:text-base text-slate-umber leading-relaxed max-w-xl mx-auto">
+        A curated archive of original canvas works. Each piece explores feminine silhouettes, sun-washed tones, and ordinary moments rendered in rich acrylic and oil.
+      </p>
+    </div>
+
+    <!-- Filter Bar (Client-Side Reactive) -->
+    <div class="sticky top-20 sm:top-24 z-30 bg-linen/95 backdrop-blur-md py-4 mb-12 border-y border-border-whisper">
+      <div class="flex items-center gap-2 overflow-x-auto no-scrollbar scroll-smooth pb-1 text-xs font-sans tracking-wider">
+        {categories.map((cat, idx) => (
+          <button
+            type="button"
+            data-filter={cat}
+            class={`filter-btn whitespace-nowrap px-4 py-2 rounded-full border transition-all duration-200 cursor-pointer ${
+              idx === 0
+                ? 'active bg-charcoal text-linen border-charcoal font-medium'
+                : 'bg-sand/60 text-slate-umber border-border-whisper/80 hover:border-charcoal hover:text-charcoal'
+            }`}
+          >
+            {cat}
+          </button>
+        ))}
+      </div>
+    </div>
+
+    <!-- Artwork Grid -->
+    <div id="paintings-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10 sm:gap-12">
+      {sortedPaintings.map((painting) => (
+        <div
+          class="artwork-item"
+          data-category={painting.data.category}
+          data-status={painting.data.status}
+        >
+          <PaintingCard painting={painting.data} />
+        </div>
+      ))}
+    </div>
+
+    <!-- Empty State -->
+    <div id="empty-state" class="hidden text-center py-20">
+      <p class="font-serif text-2xl text-charcoal">No artworks found in this category.</p>
+      <p class="font-sans text-xs text-slate-umber mt-2">Try selecting another filter or view all paintings.</p>
+      <button
+        type="button"
+        id="reset-filter-btn"
+        class="mt-6 px-6 py-2.5 bg-charcoal text-linen text-xs uppercase tracking-widest rounded hover:bg-terracotta transition-colors"
+      >
+        View All Paintings
+      </button>
+    </div>
+
+    <!-- Commission Hook Banner -->
+    <div class="mt-24 p-8 sm:p-12 rounded bg-sand/50 border border-border-whisper text-center max-w-3xl mx-auto space-y-4">
+      <h3 class="font-serif text-2xl sm:text-3xl text-charcoal font-medium">
+        Looking for a specific size or custom canvas?
+      </h3>
+      <p class="font-sans text-xs sm:text-sm text-slate-umber max-w-lg mx-auto">
+        If an original has been sold or you have a custom dimensions requirement for your space, Sam accepts a limited number of painting commissions each season.
+      </p>
+      <div class="pt-2">
+        <a
+          href="/contact?type=painting"
+          class="inline-flex px-6 py-3 bg-charcoal text-linen text-xs uppercase tracking-widest font-sans font-medium rounded hover:bg-terracotta transition-colors"
+        >
+          Enquire About a Custom Painting
+        </a>
+      </div>
+    </div>
+
+  </div>
+</Layout>
+
+<script>
+  // Client-side filtering logic
+  const buttons = document.querySelectorAll<HTMLButtonElement>('.filter-btn');
+  const items = document.querySelectorAll<HTMLElement>('.artwork-item');
+  const emptyState = document.getElementById('empty-state');
+  const resetBtn = document.getElementById('reset-filter-btn');
+
+  function applyFilter(category: string) {
+    let visibleCount = 0;
+
+    buttons.forEach((btn) => {
+      const match = btn.getAttribute('data-filter') === category;
+      if (match) {
+        btn.classList.add('bg-charcoal', 'text-linen', 'border-charcoal', 'font-medium');
+        btn.classList.remove('bg-sand/60', 'text-slate-umber');
+      } else {
+        btn.classList.remove('bg-charcoal', 'text-linen', 'border-charcoal', 'font-medium');
+        btn.classList.add('bg-sand/60', 'text-slate-umber');
+      }
+    });
+
+    items.forEach((item) => {
+      const itemCategory = item.getAttribute('data-category') || '';
+      const itemStatus = item.getAttribute('data-status') || '';
+
+      let show = false;
+      if (category === 'All Paintings') {
+        show = true;
+      } else if (category === 'Available Works') {
+        show = itemStatus.toLowerCase() === 'available';
+      } else {
+        show = itemCategory === category;
+      }
+
+      if (show) {
+        item.style.display = 'block';
+        visibleCount++;
+      } else {
+        item.style.display = 'none';
+      }
+    });
+
+    if (emptyState) {
+      emptyState.classList.toggle('hidden', visibleCount > 0);
+    }
+  }
+
+  buttons.forEach((btn) => {
+    btn.addEventListener('click', () => {
+      const cat = btn.getAttribute('data-filter') || 'All Paintings';
+      applyFilter(cat);
+
+      // Update URL query parameter without reloading
+      const url = new URL(window.location.href);
+      if (cat === 'All Paintings') {
+        url.searchParams.delete('category');
+      } else {
+        url.searchParams.set('category', cat);
+      }
+      window.history.replaceState({}, '', url.toString());
+    });
+  });
+
+  resetBtn?.addEventListener('click', () => {
+    applyFilter('All Paintings');
+  });
+
+  // Handle URL query parameter on initial load
+  const initialParams = new URLSearchParams(window.location.search);
+  const initialCategory = initialParams.get('category');
+  const initialStatus = initialParams.get('status');
+
+  if (initialStatus === 'Available') {
+    applyFilter('Available Works');
+  } else if (initialCategory) {
+    applyFilter(initialCategory);
+  }
+</script>

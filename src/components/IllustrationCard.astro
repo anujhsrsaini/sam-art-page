@@ -1,0 +1,78 @@
+---
+interface Props {
+  project: {
+    id: string;
+    title: string;
+    slug: string;
+    category: string;
+    clientOrOccasion?: string;
+    year: number;
+    shortDescription: string;
+    deliverables: string[];
+    coverImage: string;
+  };
+}
+
+const { project } = Astro.props;
+---
+
+<div class="group flex flex-col transition-all duration-300">
+  <a
+    href={`/illustration/${project.slug}`}
+    class="relative block overflow-hidden bg-canvas rounded-sm border border-border-whisper/70 p-2 sm:p-3 shadow-[0_2px_10px_rgba(0,0,0,0.02)] transition-all duration-300 group-hover:shadow-[0_8px_24px_rgba(0,0,0,0.06)] group-hover:border-border-whisper"
+  >
+    <div class="overflow-hidden aspect-[4/3] bg-sand/30 flex items-center justify-center">
+      <img
+        src={project.coverImage}
+        alt={`${project.title} by Samridhi`}
+        loading="lazy"
+        class="w-full h-full object-cover transition-transform duration-700 ease-out group-hover:scale-[1.03]"
+      />
+    </div>
+
+    <!-- Category Pill -->
+    <div class="absolute top-4 left-4">
+      <span class="inline-flex items-center px-2.5 py-1 text-[10px] font-sans font-medium tracking-widest uppercase bg-linen/90 text-charcoal border border-border-whisper rounded-full backdrop-blur-sm">
+        {project.category}
+      </span>
+    </div>
+  </a>
+
+  <!-- Metadata -->
+  <div class="pt-4 pb-2 flex flex-col space-y-1.5">
+    <div class="flex items-baseline justify-between gap-2">
+      <h3 class="font-serif text-lg sm:text-xl font-medium text-charcoal group-hover:text-terracotta transition-colors">
+        <a href={`/illustration/${project.slug}`}>
+          {project.title}
+        </a>
+      </h3>
+      <span class="font-sans text-xs text-stone-muted">
+        {project.year}
+      </span>
+    </div>
+
+    {project.clientOrOccasion && (
+      <p class="font-sans text-xs text-slate-umber italic">
+        {project.clientOrOccasion}
+      </p>
+    )}
+
+    <p class="font-sans text-xs text-slate-umber/90 line-clamp-2 leading-relaxed">
+      {project.shortDescription}
+    </p>
+
+    <!-- Deliverables tags -->
+    <div class="pt-2 flex flex-wrap gap-1.5">
+      {project.deliverables.slice(0, 3).map((item) => (
+        <span class="text-[10px] font-sans bg-sand/80 text-charcoal/80 px-2 py-0.5 rounded">
+          {item}
+        </span>
+      ))}
+      {project.deliverables.length > 3 && (
+        <span class="text-[10px] font-sans text-stone-muted self-center">
+          +{project.deliverables.length - 3} more
+        </span>
+      )}
+    </div>
+  </div>
+</div>

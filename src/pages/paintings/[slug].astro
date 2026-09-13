@@ -1,0 +1,226 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import PaintingCard from '../../components/PaintingCard.astro';
+import { getCollection, type CollectionEntry } from 'astro:content';
+
+export async function getStaticPaths() {
+  const paintings = await getCollection('paintings');
+  return paintings.map((painting) => ({
+    params: { slug: painting.data.slug },
+    props: { painting },
+  }));
+}
+
+interface Props {
+  painting: CollectionEntry<'paintings'>;
+}
+
+const { painting } = Astro.props;
+const data = painting.data;
+
+// Get related paintings
+const allPaintings = await getCollection('paintings');
+const relatedPaintings = allPaintings
+  .filter((p) => p.data.id !== data.id && (p.data.category === data.category || p.data.featuredOnHome))
+  .slice(0, 3);
+
+const isAvailable = data.status === 'Available';
+
+// Pre-filled WhatsApp message
+const whatsappMessage = encodeURIComponent(
+  `Hi Sam! I'm visiting your website and I'm interested in your painting "${data.title}" (Ref: ${data.id})${
+    data.price?.displayPrice ? ` listed at ${data.price.displayPrice}` : ''
+  }. Could you please let me know if it's currently available?`
+);
+const whatsappUrl = `https://wa.me/91XXXXXXXXXX?text=${whatsappMessage}`;
+---
+
+<Layout
+  title={`${data.title} | Art by Sam`}
+  description={`${data.title} — ${data.medium}, ${data.dimensions}, ${data.year}. Original canvas painting by Samridhi.`}
+  image={data.image}
+>
+  <div class="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12 pt-8 pb-24">
+    
+    <!-- Breadcrumb Navigation -->
+    <nav class="flex items-center space-x-2 text-xs font-sans text-slate-umber mb-8">
+      <a href="/" class="hover:text-terracotta transition-colors">Home</a>
+      <span>/</span>
+      <a href="/paintings" class="hover:text-terracotta transition-colors">Paintings</a>
+      <span>/</span>
+      <span class="text-charcoal font-medium truncate max-w-[200px] sm:max-w-none">{data.title}</span>
+    </nav>
+
+    <!-- Main Detail Grid -->
+    <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-start">
+      
+      <!-- Left Column: High-Res Artwork Viewer (7 cols) -->
+      <div class="lg:col-span-7 space-y-4">
+        <div class="relative bg-canvas p-3 sm:p-5 rounded border border-border-whisper shadow-sm">
+          <div class="overflow-hidden bg-sand/20 aspect-[4/5] sm:aspect-[3/4] flex items-center justify-center">
+            <img
+              id="main-artwork-img"
+              src={data.image}
+              alt={`${data.title} — ${data.medium} by Samridhi`}
+              class="w-full h-full object-cover cursor-zoom-in transition-transform duration-500 hover:scale-105"
+            />
+          </div>
+          <div class="mt-3 flex items-center justify-between text-[11px] font-sans text-stone-muted">
+            <span>Click or pinch to inspect brushwork texture</span>
+            <span>Ref: {data.id}</span>
+          </div>
+        </div>
+
+        <!-- Detail shots (if available) -->
+        {data.detailShots && data.detailShots.length > 0 && (
+          <div class="flex gap-3 overflow-x-auto pt-2">
+            <button
+              type="button"
+              class="w-20 h-20 rounded border-2 border-charcoal overflow-hidden flex-shrink-0"
+              onclick={`document.getElementById('main-artwork-img').src = '${data.image}'`}
+            >
+              <img src={data.image} alt="Full view" class="w-full h-full object-cover" />
+            </button>
+            {data.detailShots.map((shot, idx) => (
+              <button
+                type="button"
+                class="w-20 h-20 rounded border border-border-whisper hover:border-charcoal overflow-hidden flex-shrink-0"
+                onclick={`document.getElementById('main-artwork-img').src = '${shot}'`}
+              >
+                <img src={shot} alt={`Detail ${idx + 1}`} class="w-full h-full object-cover" />
+              </button>
+            ))}
+          </div>
+        )}
+      </div>
+
+      <!-- Right Column: Artwork Specifications & Inquiries (5 cols) -->
+      <div class="lg:col-span-5 space-y-8 lg:sticky lg:top-32">
+        
+        <div>
+          <!-- Category & Status -->
+          <div class="flex items-center justify-between gap-2 mb-2">
+            <span class="text-xs font-sans uppercase tracking-widest text-slate-umber">
+              {data.category}
+            </span>
+            {isAvailable ? (
+              <span class="inline-flex items-center gap-1.5 px-3 py-1 text-xs font-sans font-medium bg-sage-bg text-sage border border-sage-border rounded-full">
+                <span class="w-1.5 h-1.5 rounded-full bg-sage" />
+                Available for Acquisition
+              </span>
+            ) : (
+              <span class="px-3 py-1 text-xs font-sans font-medium bg-sand text-slate-umber border border-border-whisper rounded-full">
+                {data.status} · Private Collection
+              </span>
+            )}
+          </div>
+
+          <!-- Title -->
+          <h1 class="font-serif text-3xl sm:text-4xl lg:text-5xl font-medium text-charcoal leading-tight">
+            {data.title}
+          </h1>
+
+          <!-- Price -->
+          {data.price?.displayPrice && !data.price.hidePrice && (
+            <div class="mt-3">
+              <span class="font-sans text-2xl font-semibold text-charcoal">
+                {data.price.displayPrice}
+              </span>
+              <span class="text-xs font-sans text-slate-umber ml-2">
+                (Taxes & standard packing included)
+              </span>
+            </div>
+          )}
+        </div>
+
+        <!-- Narrative / Inspiration -->
+        {data.description && (
+          <div class="p-5 rounded bg-sand/30 border-l-2 border-terracotta text-slate-umber font-sans text-sm leading-relaxed">
+            <p class="italic">"{data.description}"</p>
+          </div>
+        )}
+
+        <!-- Specifications Table -->
+        <div class="border-y border-border-whisper py-5 space-y-3 font-sans text-xs">
+          <div class="flex justify-between">
+            <span class="text-slate-umber uppercase tracking-wider">Medium</span>
+            <span class="text-charcoal font-medium">{data.medium}</span>
+          </div>
+          <div class="flex justify-between">
+            <span class="text-slate-umber uppercase tracking-wider">Dimensions</span>
+            <span class="text-charcoal font-medium">{data.dimensions}</span>
+          </div>
+          <div class="flex justify-between">
+            <span class="text-slate-umber uppercase tracking-wider">Year of Creation</span>
+            <span class="text-charcoal font-medium">{data.year}</span>
+          </div>
+          <div class="flex justify-between">
+            <span class="text-slate-umber uppercase tracking-wider">Authenticity</span>
+            <span class="text-charcoal font-medium">Signed & Dated by Samridhi</span>
+          </div>
+          <div class="flex justify-between">
+            <span class="text-slate-umber uppercase tracking-wider">Shipping</span>
+            <span class="text-charcoal font-medium">Worldwide Insured Shipping</span>
+          </div>
+        </div>
+
+        <!-- Purchase & Inquiry CTAs -->
+        <div class="space-y-3 pt-2">
+          {isAvailable ? (
+            <>
+              <a
+                href={`/contact?type=painting&artwork=${encodeURIComponent(data.title)}&id=${data.id}`}
+                class="w-full flex items-center justify-center px-6 py-4 bg-charcoal text-linen text-xs uppercase tracking-widest font-sans font-medium rounded hover:bg-terracotta transition-colors duration-300 shadow-sm"
+              >
+                Enquire to Purchase This Painting
+              </a>
+              <a
+                href={whatsappUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                class="w-full flex items-center justify-center gap-2 px-6 py-3.5 border border-charcoal/30 text-charcoal text-xs uppercase tracking-widest font-sans font-medium rounded hover:bg-sand transition-colors duration-300"
+              >
+                <span>Quick Chat on WhatsApp</span>
+                <span class="text-terracotta">↗</span>
+              </a>
+            </>
+          ) : (
+            <div class="space-y-3">
+              <p class="text-xs font-sans text-slate-umber">
+                This piece has been acquired by a private collector. You can commission a similar custom artwork in your desired size.
+              </p>
+              <a
+                href={`/contact?type=commission&similar=${encodeURIComponent(data.title)}`}
+                class="w-full flex items-center justify-center px-6 py-4 bg-charcoal text-linen text-xs uppercase tracking-widest font-sans font-medium rounded hover:bg-terracotta transition-colors duration-300"
+              >
+                Enquire About a Commissioned Piece
+              </a>
+            </div>
+          )}
+        </div>
+
+      </div>
+
+    </div>
+
+    <!-- Related Artworks Section -->
+    {relatedPaintings.length > 0 && (
+      <div class="mt-28 pt-16 border-t border-border-whisper">
+        <div class="flex items-baseline justify-between mb-10">
+          <h2 class="font-serif text-2xl sm:text-3xl font-medium text-charcoal">
+            Related Works from the Studio
+          </h2>
+          <a href="/paintings" class="text-xs font-sans uppercase tracking-wider text-terracotta hover:underline">
+            View All →
+          </a>
+        </div>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+          {relatedPaintings.map((p) => (
+            <PaintingCard painting={p.data} />
+          ))}
+        </div>
+      </div>
+    )}
+
+  </div>
+</Layout>
