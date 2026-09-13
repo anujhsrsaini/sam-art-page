@@ -1,4 +1,6 @@
 ---
+import { u } from '../utils/paths';
+
 const currentYear = new Date().getFullYear();
 ---
 
@@ -21,11 +23,11 @@ const currentYear = new Date().getFullYear();
       <div class="space-y-3">
         <h4 class="font-sans text-xs uppercase tracking-widest text-charcoal font-semibold">Explore</h4>
         <ul class="space-y-2 font-sans text-xs tracking-wider text-slate-umber">
-          <li><a href="/paintings" class="hover:text-terracotta transition-colors">Paintings Archive</a></li>
-          <li><a href="/paintings?status=Available" class="hover:text-terracotta transition-colors">Available Originals</a></li>
-          <li><a href="/illustration" class="hover:text-terracotta transition-colors">Commercial & Event Illustration</a></li>
-          <li><a href="/about" class="hover:text-terracotta transition-colors">About Samridhi</a></li>
-          <li><a href="/contact" class="hover:text-terracotta transition-colors">Commissions & Inquiries</a></li>
+          <li><a href={u('/paintings')} class="hover:text-terracotta transition-colors">Paintings Archive</a></li>
+          <li><a href={`${u('/paintings')}?status=Available`} class="hover:text-terracotta transition-colors">Available Originals</a></li>
+          <li><a href={u('/illustration')} class="hover:text-terracotta transition-colors">Commercial & Event Illustration</a></li>
+          <li><a href={u('/about')} class="hover:text-terracotta transition-colors">About Samridhi</a></li>
+          <li><a href={u('/contact')} class="hover:text-terracotta transition-colors">Commissions & Inquiries</a></li>
         </ul>
       </div>
 
@@ -40,7 +42,7 @@ const currentYear = new Date().getFullYear();
             </a>
           </li>
           <li>
-            <a href="/contact" class="hover:text-terracotta transition-colors">
+            <a href={u('/contact')} class="hover:text-terracotta transition-colors">
               Direct Commissions
             </a>
           </li>
@@ -50,7 +52,7 @@ const currentYear = new Date().getFullYear();
             </a>
           </li>
           <li>
-            <a href="/admin" class="text-stone-muted hover:text-charcoal transition-colors text-[11px]">
+            <a href={u('/admin')} class="text-stone-muted hover:text-charcoal transition-colors text-[11px]">
               Artist Login (CMS)
             </a>
           </li>

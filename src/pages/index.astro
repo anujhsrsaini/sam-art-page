@@ -3,6 +3,7 @@ import Layout from '../layouts/Layout.astro';
 import PaintingCard from '../components/PaintingCard.astro';
 import IllustrationCard from '../components/IllustrationCard.astro';
 import { getCollection } from 'astro:content';
+import { u } from '../utils/paths';
 
 const allPaintings = await getCollection('paintings');
 const featuredPaintings = allPaintings
@@ -41,13 +42,13 @@ const featuredIllustrations = allIllustrations
 
           <div class="flex flex-col sm:flex-row items-stretch sm:items-center gap-4 pt-2">
             <a
-              href="/paintings"
+              href={u('/paintings')}
               class="inline-flex justify-center items-center px-7 py-3.5 bg-charcoal text-linen text-xs uppercase tracking-widest font-sans font-medium rounded hover:bg-terracotta transition-colors duration-300 shadow-sm"
             >
               Explore Paintings Archive
             </a>
             <a
-              href="/illustration"
+              href={u('/illustration')}
               class="inline-flex justify-center items-center px-7 py-3.5 border border-charcoal/30 text-charcoal text-xs uppercase tracking-widest font-sans font-medium rounded hover:bg-sand transition-colors duration-300"
             >
               Illustration Work
@@ -72,7 +73,7 @@ const featuredIllustrations = allIllustrations
                 <span class="mx-2">·</span>
                 <span>Acrylic on canvas, 24 × 30 in</span>
               </div>
-              <a href="/paintings/she-stayed-until-sunset" class="text-terracotta hover:underline font-medium">
+              <a href={u('/paintings/she-stayed-until-sunset')} class="text-terracotta hover:underline font-medium">
                 View Artwork Details →
               </a>
             </div>
@@ -108,7 +109,7 @@ const featuredIllustrations = allIllustrations
 
       <div class="pt-2">
         <a
-          href="/about"
+          href={u('/about')}
           class="font-sans text-xs uppercase tracking-widest text-charcoal hover:text-terracotta font-semibold border-b border-charcoal/30 hover:border-terracotta pb-1 transition-colors"
         >
           Read My Story & Studio Practice →
@@ -132,7 +133,7 @@ const featuredIllustrations = allIllustrations
           </h2>
         </div>
         <a
-          href="/paintings"
+          href={u('/paintings')}
           class="font-sans text-xs uppercase tracking-widest text-charcoal hover:text-terracotta font-medium flex items-center gap-1.5 transition-colors"
         >
           <span>View All Paintings Archive</span>
@@ -140,7 +141,7 @@ const featuredIllustrations = allIllustrations
         </a>
       </div>
 
-      <!-- Paintings Grid (Breathing room architecture) -->
+      <!-- Paintings Grid -->
       <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10 sm:gap-12">
         {featuredPaintings.slice(0, 6).map((painting) => (
           <PaintingCard painting={painting.data} />
@@ -149,7 +150,7 @@ const featuredIllustrations = allIllustrations
 
       <div class="mt-16 text-center">
         <a
-          href="/paintings"
+          href={u('/paintings')}
           class="inline-flex items-center justify-center px-8 py-3.5 border border-charcoal text-charcoal hover:bg-charcoal hover:text-linen text-xs uppercase tracking-widest font-sans font-medium rounded transition-all duration-300"
         >
           Explore All Available & Archived Works ({allPaintings.length})
@@ -176,7 +177,7 @@ const featuredIllustrations = allIllustrations
           </p>
         </div>
         <a
-          href="/illustration"
+          href={u('/illustration')}
           class="font-sans text-xs uppercase tracking-widest text-charcoal hover:text-terracotta font-medium flex items-center gap-1.5 transition-colors"
         >
           <span>Explore All Categories</span>
@@ -255,7 +256,7 @@ const featuredIllustrations = allIllustrations
       </p>
       <div class="pt-4 flex flex-col sm:flex-row items-center justify-center gap-4">
         <a
-          href="/contact"
+          href={u('/contact')}
           class="inline-flex justify-center items-center px-8 py-3.5 bg-charcoal text-linen text-xs uppercase tracking-widest font-sans font-medium rounded hover:bg-terracotta transition-colors duration-300 shadow-sm w-full sm:w-auto"
         >
           Enquire About a Commission

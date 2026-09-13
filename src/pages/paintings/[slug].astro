@@ -2,6 +2,7 @@
 import Layout from '../../layouts/Layout.astro';
 import PaintingCard from '../../components/PaintingCard.astro';
 import { getCollection, type CollectionEntry } from 'astro:content';
+import { u } from '../../utils/paths';
 
 export async function getStaticPaths() {
   const paintings = await getCollection('paintings');
@@ -44,9 +45,9 @@ const whatsappUrl = `https://wa.me/91XXXXXXXXXX?text=${whatsappMessage}`;
     
     <!-- Breadcrumb Navigation -->
     <nav class="flex items-center space-x-2 text-xs font-sans text-slate-umber mb-8">
-      <a href="/" class="hover:text-terracotta transition-colors">Home</a>
+      <a href={u('/')} class="hover:text-terracotta transition-colors">Home</a>
       <span>/</span>
-      <a href="/paintings" class="hover:text-terracotta transition-colors">Paintings</a>
+      <a href={u('/paintings')} class="hover:text-terracotta transition-colors">Paintings</a>
       <span>/</span>
       <span class="text-charcoal font-medium truncate max-w-[200px] sm:max-w-none">{data.title}</span>
     </nav>
@@ -169,7 +170,7 @@ const whatsappUrl = `https://wa.me/91XXXXXXXXXX?text=${whatsappMessage}`;
           {isAvailable ? (
             <>
               <a
-                href={`/contact?type=painting&artwork=${encodeURIComponent(data.title)}&id=${data.id}`}
+                href={`${u('/contact')}?type=painting&artwork=${encodeURIComponent(data.title)}&id=${data.id}`}
                 class="w-full flex items-center justify-center px-6 py-4 bg-charcoal text-linen text-xs uppercase tracking-widest font-sans font-medium rounded hover:bg-terracotta transition-colors duration-300 shadow-sm"
               >
                 Enquire to Purchase This Painting
@@ -190,7 +191,7 @@ const whatsappUrl = `https://wa.me/91XXXXXXXXXX?text=${whatsappMessage}`;
                 This piece has been acquired by a private collector. You can commission a similar custom artwork in your desired size.
               </p>
               <a
-                href={`/contact?type=commission&similar=${encodeURIComponent(data.title)}`}
+                href={`${u('/contact')}?type=commission&similar=${encodeURIComponent(data.title)}`}
                 class="w-full flex items-center justify-center px-6 py-4 bg-charcoal text-linen text-xs uppercase tracking-widest font-sans font-medium rounded hover:bg-terracotta transition-colors duration-300"
               >
                 Enquire About a Commissioned Piece
@@ -210,7 +211,7 @@ const whatsappUrl = `https://wa.me/91XXXXXXXXXX?text=${whatsappMessage}`;
           <h2 class="font-serif text-2xl sm:text-3xl font-medium text-charcoal">
             Related Works from the Studio
           </h2>
-          <a href="/paintings" class="text-xs font-sans uppercase tracking-wider text-terracotta hover:underline">
+          <a href={u('/paintings')} class="text-xs font-sans uppercase tracking-wider text-terracotta hover:underline">
             View All →
           </a>
         </div>

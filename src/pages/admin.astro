@@ -1,4 +1,6 @@
 ---
-// Redirect /admin directly to /admin/index.html
-return Astro.redirect('/admin/index.html');
+import { u } from '../utils/paths';
+
+const target = u('/admin/index.html');
+return Astro.redirect(target);
 ---

@@ -1,17 +1,19 @@
 ---
+import { u } from '../utils/paths';
+
 const pathname = new URL(Astro.request.url).pathname;
 
 const navItems = [
-  { name: 'HOME', href: '/' },
-  { name: 'PAINTINGS', href: '/paintings' },
-  { name: 'ILLUSTRATION', href: '/illustration' },
-  { name: 'ABOUT', href: '/about' },
-  { name: 'CONTACT / COMMISSIONS', href: '/contact' }
+  { name: 'HOME', href: u('/') },
+  { name: 'PAINTINGS', href: u('/paintings') },
+  { name: 'ILLUSTRATION', href: u('/illustration') },
+  { name: 'ABOUT', href: u('/about') },
+  { name: 'CONTACT / COMMISSIONS', href: u('/contact') }
 ];
 
 const isActive = (href: string) => {
-  if (href === '/') {
-    return pathname === '/' || pathname === '';
+  if (href === u('/') || href === u('')) {
+    return pathname === u('/') || pathname === u('') || pathname === u('/') + '/';
   }
   return pathname.startsWith(href);
 };
@@ -22,7 +24,7 @@ const isActive = (href: string) => {
     <div class="flex items-center justify-between h-20 sm:h-24">
       
       <!-- Brand Logo -->
-      <a href="/" class="group flex flex-col items-start">
+      <a href={u('/')} class="group flex flex-col items-start">
         <span class="font-serif text-2xl sm:text-3xl tracking-widest text-charcoal group-hover:text-terracotta transition-colors uppercase font-medium">
           Art by Sam
         </span>
@@ -53,7 +55,7 @@ const isActive = (href: string) => {
       <!-- Right Header Actions (Direct WhatsApp Quick Connect) -->
       <div class="hidden md:flex items-center">
         <a
-          href="/contact"
+          href={u('/contact')}
           class="inline-flex items-center justify-center px-4 py-2 text-xs uppercase tracking-wider font-sans font-medium text-charcoal border border-charcoal/40 rounded hover:bg-charcoal hover:text-linen hover:border-charcoal transition-all duration-200"
         >
           Enquire
@@ -89,7 +91,7 @@ const isActive = (href: string) => {
     ))}
     <div class="pt-4 border-t border-border-whisper">
       <a
-        href="/contact"
+        href={u('/contact')}
         class="block text-center py-2.5 px-4 bg-charcoal text-linen text-xs uppercase tracking-wider rounded font-medium"
       >
         Commission / Enquire

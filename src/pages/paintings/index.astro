@@ -2,6 +2,7 @@
 import Layout from '../../layouts/Layout.astro';
 import PaintingCard from '../../components/PaintingCard.astro';
 import { getCollection } from 'astro:content';
+import { u } from '../../utils/paths';
 
 const allPaintings = await getCollection('paintings');
 const sortedPaintings = allPaintings.sort(
@@ -95,7 +96,7 @@ const categories = [
       </p>
       <div class="pt-2">
         <a
-          href="/contact?type=painting"
+          href={`${u('/contact')}?type=painting`}
           class="inline-flex px-6 py-3 bg-charcoal text-linen text-xs uppercase tracking-widest font-sans font-medium rounded hover:bg-terracotta transition-colors"
         >
           Enquire About a Custom Painting

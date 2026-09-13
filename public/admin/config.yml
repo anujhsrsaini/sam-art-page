@@ -3,13 +3,13 @@
 
 backend:
   name: github
-  repo: anujsaini/sam-art-page # Anuj's GitHub repository
+  repo: anujhsrsaini/sam-art-page
   branch: main
 
 media_folder: "public/images"
-public_folder: "/images"
+public_folder: "/sam-art-page/images"
 
-display_url: "https://anujsaini.github.io/sam-art-page"
+display_url: "https://anujhsrsaini.github.io/sam-art-page"
 logo_url: ""
 
 collections:

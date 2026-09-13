@@ -1,5 +1,6 @@
 ---
 import Layout from '../layouts/Layout.astro';
+import { u } from '../utils/paths';
 ---
 
 <Layout
@@ -16,13 +17,13 @@ import Layout from '../layouts/Layout.astro';
     </p>
     <div class="pt-4 flex flex-col sm:flex-row items-center justify-center gap-4">
       <a
-        href="/paintings"
+        href={u('/paintings')}
         class="px-6 py-3 bg-charcoal text-linen text-xs uppercase tracking-widest font-sans font-medium rounded hover:bg-terracotta transition-colors"
       >
         Explore Paintings Archive
       </a>
       <a
-        href="/"
+        href={u('/')}
         class="px-6 py-3 border border-charcoal/30 text-charcoal text-xs uppercase tracking-widest font-sans font-medium rounded hover:bg-sand transition-colors"
       >
         Return to Home

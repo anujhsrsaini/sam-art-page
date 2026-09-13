@@ -1,6 +1,7 @@
 ---
 import Layout from '../../layouts/Layout.astro';
 import { getCollection, type CollectionEntry } from 'astro:content';
+import { u } from '../../utils/paths';
 
 export async function getStaticPaths() {
   const illustrations = await getCollection('illustrations');
@@ -27,9 +28,9 @@ const data = project.data;
     
     <!-- Breadcrumb Navigation -->
     <nav class="flex items-center space-x-2 text-xs font-sans text-slate-umber mb-8">
-      <a href="/" class="hover:text-terracotta transition-colors">Home</a>
+      <a href={u('/')} class="hover:text-terracotta transition-colors">Home</a>
       <span>/</span>
-      <a href="/illustration" class="hover:text-terracotta transition-colors">Illustration</a>
+      <a href={u('/illustration')} class="hover:text-terracotta transition-colors">Illustration</a>
       <span>/</span>
       <span class="text-charcoal font-medium truncate">{data.title}</span>
     </nav>
@@ -117,13 +118,13 @@ const data = project.data;
       </p>
       <div class="pt-4 flex flex-col sm:flex-row items-center justify-center gap-4">
         <a
-          href={`/contact?type=${encodeURIComponent(data.category.toLowerCase())}&project=${encodeURIComponent(data.title)}`}
+          href={`${u('/contact')}?type=${encodeURIComponent(data.category.toLowerCase())}&project=${encodeURIComponent(data.title)}`}
           class="px-8 py-3.5 bg-charcoal text-linen text-xs uppercase tracking-widest font-sans font-medium rounded hover:bg-terracotta transition-colors shadow-sm"
         >
           Enquire About a Similar Project
         </a>
         <a
-          href="/illustration"
+          href={u('/illustration')}
           class="px-6 py-3.5 border border-charcoal/30 text-charcoal text-xs uppercase tracking-widest font-sans font-medium rounded hover:bg-sand transition-colors"
         >
           ← Back to Illustration Showcase
