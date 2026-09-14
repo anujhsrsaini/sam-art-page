@@ -33,7 +33,7 @@ const isAvailable = painting.status === 'Available';
   >
     <div class="overflow-hidden aspect-[4/5] sm:aspect-[3/4] bg-sand/30 flex items-center justify-center">
       <img
-        src={painting.image}
+        src={painting.image.startsWith('http') ? painting.image : u(painting.image)}
         alt={`${painting.title} by Samridhi — ${painting.medium}`}
         loading="lazy"
         class="w-full h-full object-cover transition-transform duration-700 ease-out group-hover:scale-[1.03]"

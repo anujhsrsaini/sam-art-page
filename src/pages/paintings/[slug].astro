@@ -26,6 +26,7 @@ const relatedPaintings = allPaintings
   .slice(0, 3);
 
 const isAvailable = data.status === 'Available';
+const mainImageUrl = data.image.startsWith('http') ? data.image : u(data.image);
 
 // Pre-filled WhatsApp message
 const whatsappMessage = encodeURIComponent(
@@ -39,7 +40,7 @@ const whatsappUrl = `https://wa.me/91XXXXXXXXXX?text=${whatsappMessage}`;
 <Layout
   title={`${data.title} | Art by Sam`}
   description={`${data.title} — ${data.medium}, ${data.dimensions}, ${data.year}. Original canvas painting by Samridhi.`}
-  image={data.image}
+  image={mainImageUrl}
 >
   <div class="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12 pt-8 pb-24">
     
@@ -61,7 +62,7 @@ const whatsappUrl = `https://wa.me/91XXXXXXXXXX?text=${whatsappMessage}`;
           <div class="overflow-hidden bg-sand/20 aspect-[4/5] sm:aspect-[3/4] flex items-center justify-center">
             <img
               id="main-artwork-img"
-              src={data.image}
+              src={mainImageUrl}
               alt={`${data.title} — ${data.medium} by Samridhi`}
               class="w-full h-full object-cover cursor-zoom-in transition-transform duration-500 hover:scale-105"
             />
@@ -78,9 +79,9 @@ const whatsappUrl = `https://wa.me/91XXXXXXXXXX?text=${whatsappMessage}`;
             <button
               type="button"
               class="w-20 h-20 rounded border-2 border-charcoal overflow-hidden flex-shrink-0"
-              onclick={`document.getElementById('main-artwork-img').src = '${data.image}'`}
+              onclick={`document.getElementById('main-artwork-img').src = '${mainImageUrl}'`}
             >
-              <img src={data.image} alt="Full view" class="w-full h-full object-cover" />
+              <img src={mainImageUrl} alt="Full view" class="w-full h-full object-cover" />
             </button>
             {data.detailShots.map((shot, idx) => (
               <button

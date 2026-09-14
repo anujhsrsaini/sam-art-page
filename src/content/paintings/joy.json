@@ -1,0 +1,19 @@
+{
+  "id": "P-2026-002",
+  "title": "Joy",
+  "slug": "joy",
+  "category": "Still Life & Everyday Moments",
+  "medium": "Oil paints on Canvas",
+  "dimensions": "24” by 42”",
+  "year": 2026,
+  "status": "Available",
+  "price": {
+    "displayPrice": "Price on Request",
+    "hidePrice": false
+  },
+  "image": "/images/paintings/joy.jpg",
+  "detailShots": [],
+  "description": "An exuberantly warm, joyful celebration: a golden retriever at a lavish candlelit birthday table set with pink ribbons, lilies, wine, and a silver bowl of tennis balls.",
+  "featuredOnHome": true,
+  "displayOrder": 2
+}

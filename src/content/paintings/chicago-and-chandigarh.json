@@ -1,0 +1,19 @@
+{
+  "id": "P-2026-001",
+  "title": "Chicago and Chandigarh",
+  "slug": "chicago-and-chandigarh",
+  "category": "Travel & Places",
+  "medium": "Oil paints on Canvas",
+  "dimensions": "5ft by 4ft (60 × 48 in)",
+  "year": 2026,
+  "status": "Available",
+  "price": {
+    "displayPrice": "Price on Request",
+    "hidePrice": false
+  },
+  "image": "/images/paintings/chicago-and-chandigarh.jpg",
+  "detailShots": [],
+  "description": "A magnificent panoramic synthesis of two architectural identities: sunset reflections over the water contrasting iconic skyline architecture with the serene Open Hand Monument of Chandigarh.",
+  "featuredOnHome": true,
+  "displayOrder": 1
+}

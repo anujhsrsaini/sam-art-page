@@ -1,0 +1,19 @@
+{
+  "id": "P-2026-004",
+  "title": "A Distinguished Lady",
+  "slug": "a-distinguished-lady",
+  "category": "Figurative",
+  "medium": "Oil paints on canvas",
+  "dimensions": "16” by 18”",
+  "year": 2026,
+  "status": "Available",
+  "price": {
+    "displayPrice": "Price on Request",
+    "hidePrice": false
+  },
+  "image": "/images/paintings/a-distinguished-lady.jpg",
+  "detailShots": [],
+  "description": "An aristocratic, poised feline with an ornate Elizabethan ruffled collar and strawberry gem brooch, lounging upon a rich magenta velvet armchair beside peonies and leather-bound books.",
+  "featuredOnHome": true,
+  "displayOrder": 4
+}

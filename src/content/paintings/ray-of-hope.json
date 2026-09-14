@@ -1,0 +1,19 @@
+{
+  "id": "P-2026-003",
+  "title": "Ray of Hope",
+  "slug": "ray-of-hope",
+  "category": "Nature / Water",
+  "medium": "Oil on canvas",
+  "dimensions": "5ft 2” by 3 ft",
+  "year": 2026,
+  "status": "Available",
+  "price": {
+    "displayPrice": "Price on Request",
+    "hidePrice": false
+  },
+  "image": "/images/paintings/ray-of-hope.jpg",
+  "detailShots": [],
+  "description": "A luminous shaft of celestial sunlight breaking through dark mountain storm clouds, falling gently upon a couple in a wooden boat over lotus waters with swimming koi and swans.",
+  "featuredOnHome": true,
+  "displayOrder": 3
+}
