@@ -11,11 +11,11 @@ const sortedIllustrations = allIllustrations.sort(
 
 const categories = [
   'All Projects',
-  'WEDDING INVITES',
-  'PACKAGING',
-  'BABY ANNOUNCEMENTS',
-  'TRAVEL',
-  'PERSONAL ILLUSTRATIONS'
+  'Cards & Wedding',
+  'Packaging',
+  'Personal & Travel',
+  'Baby & Children',
+  'Pattern'
 ];
 ---
 
@@ -100,28 +100,47 @@ const categories = [
   const buttons = document.querySelectorAll<HTMLButtonElement>('.ill-filter-btn');
   const items = document.querySelectorAll<HTMLElement>('.illustration-item');
 
+  function applyFilter(selected: string) {
+    buttons.forEach((b) => {
+      const match = (b.getAttribute('data-filter') || '').toLowerCase() === selected.toLowerCase();
+      if (match) {
+        b.classList.add('bg-charcoal', 'text-linen', 'border-charcoal', 'font-medium');
+        b.classList.remove('bg-sand/60', 'text-slate-umber');
+      } else {
+        b.classList.remove('bg-charcoal', 'text-linen', 'border-charcoal', 'font-medium');
+        b.classList.add('bg-sand/60', 'text-slate-umber');
+      }
+    });
+
+    items.forEach((item) => {
+      const cat = (item.getAttribute('data-category') || '').toLowerCase();
+      if (selected === 'All Projects' || cat === selected.toLowerCase()) {
+        item.style.display = 'block';
+      } else {
+        item.style.display = 'none';
+      }
+    });
+  }
+
   buttons.forEach((btn) => {
     btn.addEventListener('click', () => {
       const selected = btn.getAttribute('data-filter') || 'All Projects';
+      applyFilter(selected);
 
-      buttons.forEach((b) => {
-        if (b === btn) {
-          b.classList.add('bg-charcoal', 'text-linen', 'border-charcoal', 'font-medium');
-          b.classList.remove('bg-sand/60', 'text-slate-umber');
-        } else {
-          b.classList.remove('bg-charcoal', 'text-linen', 'border-charcoal', 'font-medium');
-          b.classList.add('bg-sand/60', 'text-slate-umber');
-        }
-      });
-
-      items.forEach((item) => {
-        const cat = item.getAttribute('data-category') || '';
-        if (selected === 'All Projects' || cat === selected) {
-          item.style.display = 'block';
-        } else {
-          item.style.display = 'none';
-        }
-      });
+      const url = new URL(window.location.href);
+      if (selected === 'All Projects') {
+        url.searchParams.delete('category');
+      } else {
+        url.searchParams.set('category', selected);
+      }
+      window.history.replaceState({}, '', url.toString());
     });
   });
+
+  // Handle URL query parameter on initial load
+  const initialParams = new URLSearchParams(window.location.search);
+  const initialCategory = initialParams.get('category');
+  if (initialCategory) {
+    applyFilter(initialCategory);
+  }
 </script>

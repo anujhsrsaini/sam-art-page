@@ -1,0 +1,19 @@
+{
+  "id": "P-2026-008",
+  "title": "Stone Sculptures",
+  "slug": "stone-sculptures",
+  "category": "Still Life & Everyday Moments",
+  "medium": "Oil painting on wood block",
+  "dimensions": "18” by 22”",
+  "year": 2026,
+  "status": "Available",
+  "price": {
+    "displayPrice": "Price on Request",
+    "hidePrice": false
+  },
+  "image": "/images/paintings/stone-sculptures.jpg",
+  "detailShots": [],
+  "description": "A deeply textured and reverent study of classical Indian temple stone sculptures, rendered in nuanced oils on a solid wood block substrate.",
+  "featuredOnHome": true,
+  "displayOrder": 8
+}

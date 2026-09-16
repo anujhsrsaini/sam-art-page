@@ -22,7 +22,7 @@ const data = project.data;
 <Layout
   title={`${data.title} | Illustration | Art by Sam`}
   description={`${data.title} — ${data.shortDescription}`}
-  image={data.coverImage}
+  image={data.coverImage.startsWith('http') ? data.coverImage : u(data.coverImage)}
 >
   <div class="max-w-5xl mx-auto px-6 sm:px-8 lg:px-12 pt-8 pb-24">
     
@@ -79,7 +79,7 @@ const data = project.data;
     <div class="bg-canvas p-3 sm:p-5 rounded border border-border-whisper shadow-sm mb-12">
       <div class="overflow-hidden bg-sand/20 aspect-[16/10] flex items-center justify-center">
         <img
-          src={data.coverImage}
+          src={data.coverImage.startsWith('http') ? data.coverImage : u(data.coverImage)}
           alt={`${data.title} Cover`}
           class="w-full h-full object-cover"
         />
@@ -96,7 +96,7 @@ const data = project.data;
           {data.galleryImages.map((imgUrl, idx) => (
             <div class="bg-canvas p-3 rounded border border-border-whisper shadow-xs">
               <img
-                src={imgUrl}
+                src={imgUrl.startsWith('http') ? imgUrl : u(imgUrl)}
                 alt={`${data.title} detail ${idx + 1}`}
                 class="w-full aspect-[4/3] object-cover"
                 loading="lazy"

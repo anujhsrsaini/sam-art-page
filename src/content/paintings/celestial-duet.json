@@ -1,0 +1,19 @@
+{
+  "id": "P-2026-005",
+  "title": "Celestial Duet",
+  "slug": "celestial-duet",
+  "category": "Figurative",
+  "medium": "Oil paints on Canvas",
+  "dimensions": "36” by 36”",
+  "year": 2026,
+  "status": "Available",
+  "price": {
+    "displayPrice": "Price on Request",
+    "hidePrice": false
+  },
+  "image": "/images/paintings/celestial-duet.jpg",
+  "detailShots": [],
+  "description": "A mystical, celestial harmony: the Sun and the Moon personified as musicians seated beside a blooming lotus fountain, playing their strings in eternal cosmic balance.",
+  "featuredOnHome": true,
+  "displayOrder": 5
+}

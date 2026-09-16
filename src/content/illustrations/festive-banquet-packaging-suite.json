@@ -1,0 +1,22 @@
+{
+  "id": "ILL-2026-009",
+  "title": "Festive Banquet & Diwali Luxury Packaging Suite",
+  "slug": "festive-banquet-packaging-suite",
+  "category": "Packaging",
+  "clientOrOccasion": "Luxury Gifting & Confectionery Packaging",
+  "year": 2026,
+  "shortDescription": "A celebratory, opulent packaging design series capturing warm Diwali festivities: royal couple dining by lantern light, festive mithai assortments, and intimate card table gatherings.",
+  "deliverables": [
+    "Rigid Gift Box Lid Design",
+    "Sleeve & Outer Carton Wrap",
+    "Foil Stamping Layouts",
+    "Confectionery Card Inserts"
+  ],
+  "coverImage": "/images/illustrations/festive-banquet-packaging-cover.jpg",
+  "galleryImages": [
+    "/images/illustrations/festive-banquet-packaging-card-table.jpg",
+    "/images/illustrations/festive-banquet-packaging-feast-spread.jpg"
+  ],
+  "featuredOnHome": true,
+  "displayOrder": 9
+}

@@ -186,12 +186,20 @@ const featuredIllustrations = allIllustrations
       </div>
 
       <!-- Illustration Grid -->
-      <div class="grid grid-cols-1 md:grid-cols-2 gap-10 sm:gap-12">
-        {featuredIllustrations.map((project) => (
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 sm:gap-10">
+        {featuredIllustrations.slice(0, 6).map((project) => (
           <IllustrationCard project={project.data} />
         ))}
       </div>
 
+      <div class="mt-16 text-center">
+        <a
+          href={u('/illustration')}
+          class="inline-flex items-center justify-center px-8 py-3.5 border border-charcoal text-charcoal hover:bg-charcoal hover:text-linen text-xs uppercase tracking-widest font-sans font-medium rounded transition-all duration-300"
+        >
+          View All Illustrations & Projects ({allIllustrations.length})
+        </a>
+      </div>
     </div>
   </section>
 

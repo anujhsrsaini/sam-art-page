@@ -74,12 +74,11 @@ collections:
         name: "category"
         widget: "select"
         options:
-          - "WEDDING INVITES"
-          - "PACKAGING"
-          - "BABY ANNOUNCEMENTS"
-          - "PARTY INVITES"
-          - "PERSONAL ILLUSTRATIONS"
-          - "TRAVEL"
+          - "Cards & Wedding"
+          - "Packaging"
+          - "Personal & Travel"
+          - "Baby & Children"
+          - "Pattern"
       - { label: "Client or Occasion", name: "clientOrOccasion", widget: "string", required: false }
       - { label: "Year", name: "year", widget: "number", value_type: "int", default: 2026 }
       - { label: "Short Story / Concept", name: "shortDescription", widget: "text" }
