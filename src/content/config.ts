@@ -18,10 +18,6 @@ const paintingsCollection = defineCollection({
     dimensions: z.string(),
     year: z.number().int(),
     status: z.enum(['Available', 'Sold', 'Reserved', 'Not for Sale']).default('Available'),
-    price: z.object({
-      displayPrice: z.string().optional(),
-      hidePrice: z.boolean().default(false),
-    }).optional(),
     image: z.string(),
     detailShots: z.array(z.string()).default([]),
     description: z.string().optional(),

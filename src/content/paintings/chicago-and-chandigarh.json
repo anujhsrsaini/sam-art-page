@@ -7,10 +7,6 @@
   "dimensions": "5ft by 4ft",
   "year": 2026,
   "status": "Available",
-  "price": {
-    "displayPrice": "Price on Request",
-    "hidePrice": false
-  },
   "image": "/images/paintings/chicago-and-chandigarh.jpg",
   "detailShots": [],
   "description": "A magnificent panoramic synthesis of two architectural identities: sunset reflections over the water contrasting iconic skyline architecture with the serene Open Hand Monument of Chandigarh.",

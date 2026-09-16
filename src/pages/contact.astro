@@ -3,8 +3,8 @@ import Layout from '../layouts/Layout.astro';
 ---
 
 <Layout
-  title="Contact & Commissions | Art by Sam"
-  description="Enquire about acquiring an original painting, commissioning a custom canvas, or collaborating on bespoke wedding and brand illustration."
+  title="Contact & Inquiries | Art by Sam"
+  description="Get in touch with Sam for original artwork inquiries, custom commissions, or bespoke wedding and packaging illustration."
 >
   <div class="max-w-4xl mx-auto px-6 sm:px-8 pt-12 pb-24 space-y-12">
     
@@ -14,10 +14,10 @@ import Layout from '../layouts/Layout.astro';
         Get in Touch
       </span>
       <h1 class="font-serif text-4xl sm:text-5xl lg:text-6xl font-medium text-charcoal">
-        Commissions & Inquiries
+        Contact & Inquiries
       </h1>
       <p class="font-sans text-sm sm:text-base text-slate-umber leading-relaxed">
-        Whether you’re inquiring about an original painting, a bespoke wedding suite, or a commercial project, please share a few details below and Sam will get back to you within 24–48 hours.
+        Whether you’re inquiring about an artwork, a bespoke wedding suite, or a creative project, please share a few details below and Sam will get back to you within 24–48 hours.
       </p>
     </div>
 
@@ -66,11 +66,11 @@ import Layout from '../layouts/Layout.astro';
           </a>
         </div>
 
-        <!-- Studio & Shipping Notice -->
+        <!-- Studio Notice -->
         <div class="pt-4 border-t border-border-whisper/80 space-y-2 font-sans text-xs text-slate-umber">
-          <p class="font-semibold text-charcoal">Shipping & Delivery</p>
+          <p class="font-semibold text-charcoal">Studio Practice</p>
           <p>
-            Paintings are professionally packed and shipped insured across India and internationally.
+            Sam collaborates on fine art commissions, bespoke celebration stationery, and brand illustration projects worldwide.
           </p>
         </div>
       </div>
@@ -86,7 +86,7 @@ import Layout from '../layouts/Layout.astro';
         >
           <!-- Replace with Sam's Web3Forms access key -->
           <input type="hidden" name="access_key" value="YOUR_WEB3FORMS_ACCESS_KEY" />
-          <input type="hidden" name="subject" value="New Commission Inquiry — Art by Sam" />
+          <input type="hidden" name="subject" value="New Portfolio Inquiry — Art by Sam" />
           <input type="hidden" name="from_name" value="Art by Sam Studio" />
 
           <!-- Full Name -->
@@ -136,7 +136,7 @@ import Layout from '../layouts/Layout.astro';
           <!-- Project Type -->
           <div class="space-y-1.5">
             <label for="project_type" class="block font-sans text-xs uppercase tracking-wider text-charcoal font-semibold">
-              Project Type <span class="text-terracotta">*</span>
+              Inquiry Type <span class="text-terracotta">*</span>
             </label>
             <select
               id="project_type"
@@ -144,7 +144,7 @@ import Layout from '../layouts/Layout.astro';
               required
               class="w-full px-4 py-3 bg-linen border border-border-whisper rounded text-charcoal text-sm font-sans focus:outline-none focus:border-terracotta focus:ring-1 focus:ring-terracotta transition-all"
             >
-              <option value="Original Painting Purchase">Original Painting Acquisition</option>
+              <option value="Original Artwork Inquiry">Original Artwork Inquiry</option>
               <option value="Custom Canvas Commission">Custom Painting Commission</option>
               <option value="Wedding / Event Stationery Suite">Wedding / Event Invitation Suite</option>
               <option value="Baby Announcement">Baby Announcement</option>
@@ -153,49 +153,45 @@ import Layout from '../layouts/Layout.astro';
             </select>
           </div>
 
-          <!-- Deadline & Dimensions -->
+          <!-- Timeline & Location -->
           <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
             <div class="space-y-1.5">
-              <label for="deadline" class="block font-sans text-xs uppercase tracking-wider text-charcoal font-semibold">
-                Date Needed By
+              <label for="timeline" class="block font-sans text-xs uppercase tracking-wider text-charcoal font-semibold">
+                Estimated Timeline (Optional)
               </label>
               <input
                 type="text"
-                id="deadline"
-                name="deadline"
-                placeholder="e.g. November 2026"
+                id="timeline"
+                name="timeline"
+                placeholder="e.g. Next 2-3 months"
                 class="w-full px-4 py-3 bg-linen border border-border-whisper rounded text-charcoal text-sm font-sans placeholder:text-stone-muted focus:outline-none focus:border-terracotta focus:ring-1 focus:ring-terracotta transition-all"
               />
             </div>
             <div class="space-y-1.5">
-              <label for="budget" class="block font-sans text-xs uppercase tracking-wider text-charcoal font-semibold">
-                Budget Range (Optional)
+              <label for="location" class="block font-sans text-xs uppercase tracking-wider text-charcoal font-semibold">
+                Location / City (Optional)
               </label>
-              <select
-                id="budget"
-                name="budget"
-                class="w-full px-4 py-3 bg-linen border border-border-whisper rounded text-charcoal text-sm font-sans focus:outline-none focus:border-terracotta focus:ring-1 focus:ring-terracotta transition-all"
-              >
-                <option value="Flexible">Flexible / Discuss with Sam</option>
-                <option value="Under ₹25,000">Under ₹25,000</option>
-                <option value="₹25,000 – ₹50,000">₹25,000 – ₹50,000</option>
-                <option value="₹50,000 – ₹1,00,000">₹50,000 – ₹1,00,000</option>
-                <option value="₹1,00,000+">₹1,00,000+</option>
-              </select>
+              <input
+                type="text"
+                id="location"
+                name="location"
+                placeholder="e.g. Mumbai, India"
+                class="w-full px-4 py-3 bg-linen border border-border-whisper rounded text-charcoal text-sm font-sans placeholder:text-stone-muted focus:outline-none focus:border-terracotta focus:ring-1 focus:ring-terracotta transition-all"
+              />
             </div>
           </div>
 
           <!-- Project Brief -->
           <div class="space-y-1.5">
             <label for="message" class="block font-sans text-xs uppercase tracking-wider text-charcoal font-semibold">
-              Project Description / Specific Piece <span class="text-terracotta">*</span>
+              Message / Specific Artwork <span class="text-terracotta">*</span>
             </label>
             <textarea
               id="message"
               name="message"
               rows="4"
               required
-              placeholder="Tell Sam about your idea, room dimensions, wedding venue theme, or the specific painting title you're interested in..."
+              placeholder="Tell Sam about your idea, the specific artwork title you're inquiring about, or your project vision..."
               class="w-full px-4 py-3 bg-linen border border-border-whisper rounded text-charcoal text-sm font-sans placeholder:text-stone-muted focus:outline-none focus:border-terracotta focus:ring-1 focus:ring-terracotta transition-all"
             ></textarea>
           </div>
@@ -203,13 +199,13 @@ import Layout from '../layouts/Layout.astro';
           <!-- Submit Button -->
           <button
             type="submit"
-            class="w-full py-4 bg-charcoal text-linen text-xs uppercase tracking-widest font-sans font-medium rounded hover:bg-terracotta transition-colors duration-300 shadow-sm"
+            class="w-full py-4 bg-charcoal text-linen text-xs uppercase tracking-widest font-sans font-medium rounded hover:bg-terracotta transition-colors duration-300 shadow-sm cursor-pointer"
           >
-            Send Message to Sam
+            Send Inquiry to Sam
           </button>
 
           <p class="text-[11px] font-sans text-stone-muted text-center">
-            Your information is kept strictly private and used solely to respond to your inquiry.
+            Your message will be sent directly to Sam's inbox.
           </p>
         </form>
 
@@ -229,7 +225,7 @@ import Layout from '../layouts/Layout.astro';
   const projectTypeSelect = document.getElementById('project_type') as HTMLSelectElement | null;
 
   if (artworkTitle && messageInput) {
-    messageInput.value = `Hi Sam, I would like to inquire about purchasing your original painting "${artworkTitle}".`;
+    messageInput.value = `Hi Sam, I would like to inquire about your artwork "${artworkTitle}".`;
   }
 
   if (projectType && projectTypeSelect) {
@@ -238,7 +234,7 @@ import Layout from '../layouts/Layout.astro';
     } else if (projectType.includes('packaging')) {
       projectTypeSelect.value = 'Brand & Packaging Illustration';
     } else if (projectType.includes('painting')) {
-      projectTypeSelect.value = 'Original Painting Purchase';
+      projectTypeSelect.value = 'Original Artwork Inquiry';
     }
   }
 </script>

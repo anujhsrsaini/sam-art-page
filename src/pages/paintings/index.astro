@@ -12,7 +12,6 @@ const sortedPaintings = allPaintings.sort(
 // Collect unique categories
 const categories = [
   'All Paintings',
-  'Available Works',
   'Women / The Girls',
   'Figurative',
   'Travel & Places',
@@ -23,7 +22,7 @@ const categories = [
 
 <Layout
   title="Paintings Archive | Art by Sam"
-  description="Explore the complete fine art archive of original canvas paintings by Samridhi. Acrylic, oil, and mixed media works available for acquisition."
+  description="Explore the fine art portfolio of original canvas paintings by Samridhi. Oil on canvas and mixed media artworks."
 >
   <div class="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12 pt-12 pb-24">
     
@@ -65,7 +64,6 @@ const categories = [
         <div
           class="artwork-item"
           data-category={painting.data.category}
-          data-status={painting.data.status}
         >
           <PaintingCard painting={painting.data} />
         </div>
@@ -88,17 +86,17 @@ const categories = [
     <!-- Commission Hook Banner -->
     <div class="mt-24 p-8 sm:p-12 rounded bg-sand/50 border border-border-whisper text-center max-w-3xl mx-auto space-y-4">
       <h3 class="font-serif text-2xl sm:text-3xl text-charcoal font-medium">
-        Looking for a specific size or custom canvas?
+        Looking for a custom canvas or commissioned artwork?
       </h3>
       <p class="font-sans text-xs sm:text-sm text-slate-umber max-w-lg mx-auto">
-        If an original has been sold or you have a custom dimensions requirement for your space, Sam accepts a limited number of painting commissions each season.
+        Sam accepts a limited number of painting and artwork commissions each season. Reach out via the contact form to discuss your vision.
       </p>
       <div class="pt-2">
         <a
           href={`${u('/contact')}?type=painting`}
           class="inline-flex px-6 py-3 bg-charcoal text-linen text-xs uppercase tracking-widest font-sans font-medium rounded hover:bg-terracotta transition-colors"
         >
-          Enquire About a Custom Painting
+          Get in Touch via Contact Form
         </a>
       </div>
     </div>
@@ -129,15 +127,10 @@ const categories = [
 
     items.forEach((item) => {
       const itemCategory = item.getAttribute('data-category') || '';
-      const itemStatus = item.getAttribute('data-status') || '';
 
       let show = false;
-      if (category === 'All Paintings') {
+      if (category === 'All Paintings' || itemCategory === category) {
         show = true;
-      } else if (category === 'Available Works') {
-        show = itemStatus.toLowerCase() === 'available';
-      } else {
-        show = itemCategory === category;
       }
 
       if (show) {
@@ -176,11 +169,8 @@ const categories = [
   // Handle URL query parameter on initial load
   const initialParams = new URLSearchParams(window.location.search);
   const initialCategory = initialParams.get('category');
-  const initialStatus = initialParams.get('status');
 
-  if (initialStatus === 'Available') {
-    applyFilter('Available Works');
-  } else if (initialCategory) {
+  if (initialCategory) {
     applyFilter(initialCategory);
   }
 </script>
