@@ -13,14 +13,15 @@ interface Props {
     deliverables: string[];
     coverImage: string;
   };
+  baseUrl?: string;
 }
 
-const { project } = Astro.props;
+const { project, baseUrl = '/illustration' } = Astro.props;
 ---
 
 <div class="group flex flex-col transition-all duration-300">
   <a
-    href={u(`/illustration/${project.slug}`)}
+    href={u(`${baseUrl}/${project.slug}`)}
     class="relative block overflow-hidden bg-canvas rounded-sm border border-border-whisper/70 p-2 sm:p-3 shadow-[0_2px_10px_rgba(0,0,0,0.02)] transition-all duration-300 group-hover:shadow-[0_8px_24px_rgba(0,0,0,0.06)] group-hover:border-border-whisper"
   >
     <div class="overflow-hidden aspect-[4/3] bg-sand/30 flex items-center justify-center">
@@ -44,7 +45,7 @@ const { project } = Astro.props;
   <div class="pt-4 pb-2 flex flex-col space-y-1.5">
     <div class="flex items-baseline justify-between gap-2">
       <h3 class="font-serif text-lg sm:text-xl font-medium text-charcoal group-hover:text-terracotta transition-colors">
-        <a href={u(`/illustration/${project.slug}`)}>
+        <a href={u(`${baseUrl}/${project.slug}`)}>
           {project.title}
         </a>
       </h3>

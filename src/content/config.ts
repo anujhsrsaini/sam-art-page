@@ -34,7 +34,6 @@ const illustrationsCollection = defineCollection({
     slug: z.string(),
     category: z.enum([
       'Cards & Wedding',
-      'Packaging',
       'Personal & Travel',
       'Baby & Children',
       'Pattern',
@@ -50,7 +49,26 @@ const illustrationsCollection = defineCollection({
   }),
 });
 
+const packagingCollection = defineCollection({
+  type: 'data',
+  schema: z.object({
+    id: z.string(),
+    title: z.string(),
+    slug: z.string(),
+    category: z.string().default('Packaging'),
+    clientOrOccasion: z.string().optional(),
+    year: z.number().int(),
+    shortDescription: z.string(),
+    deliverables: z.array(z.string()),
+    coverImage: z.string(),
+    galleryImages: z.array(z.string()).default([]),
+    featuredOnHome: z.boolean().default(false),
+    displayOrder: z.number().default(99),
+  }),
+});
+
 export const collections = {
   paintings: paintingsCollection,
   illustrations: illustrationsCollection,
+  packaging: packagingCollection,
 };

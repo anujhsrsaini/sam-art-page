@@ -1,0 +1,63 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import IllustrationCard from '../../components/IllustrationCard.astro';
+import { getCollection } from 'astro:content';
+import { u } from '../../utils/paths';
+
+const allPackaging = await getCollection('packaging');
+const sortedPackaging = allPackaging.sort(
+  (a, b) => a.data.displayOrder - b.data.displayOrder
+);
+---
+
+<Layout
+  title="Packaging Design | Art by Sam"
+  description="Explore illustrated packaging designs by Samridhi — luxury gift boxes, confectionery tins, festive suites and more."
+>
+  <div class="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12 pt-12 pb-24">
+    
+    <!-- Header -->
+    <div class="text-center max-w-3xl mx-auto mb-12 sm:mb-16 space-y-4">
+      <span class="font-sans text-xs uppercase tracking-[0.2em] text-terracotta font-semibold block">
+        Brand & Commercial
+      </span>
+      <h1 class="font-serif text-4xl sm:text-5xl lg:text-6xl font-medium text-charcoal">
+        Packaging
+      </h1>
+      <p class="font-sans text-sm sm:text-base text-slate-umber leading-relaxed max-w-xl mx-auto">
+        Illustrated packaging designs for brands and artisans — from luxury festive gift boxes to confectionery tins, each piece crafted to tell a story on the shelf.
+      </p>
+    </div>
+
+    <!-- Packaging Grid -->
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-10 sm:gap-12">
+      {sortedPackaging.map((project) => (
+        <div>
+          <IllustrationCard project={project.data} baseUrl="/packaging" />
+        </div>
+      ))}
+    </div>
+
+    <!-- Commission CTA Box -->
+    <div class="mt-24 p-8 sm:p-12 rounded bg-sand/50 border border-border-whisper text-center max-w-3xl mx-auto space-y-4">
+      <span class="font-sans text-xs uppercase tracking-widest text-terracotta font-semibold">
+        Custom Packaging
+      </span>
+      <h3 class="font-serif text-2xl sm:text-3xl text-charcoal font-medium">
+        Need packaging that tells your brand's story?
+      </h3>
+      <p class="font-sans text-xs sm:text-sm text-slate-umber max-w-lg mx-auto leading-relaxed">
+        Sam creates bespoke illustrated packaging for gifting brands, confectioneries, and special editions. Get in touch to discuss your project.
+      </p>
+      <div class="pt-2">
+        <a
+          href={`${u('/contact')}?type=packaging`}
+          class="inline-block px-8 py-3.5 bg-charcoal text-linen text-xs uppercase tracking-widest font-sans font-medium rounded hover:bg-terracotta transition-colors"
+        >
+          Enquire About Packaging
+        </a>
+      </div>
+    </div>
+
+  </div>
+</Layout>
