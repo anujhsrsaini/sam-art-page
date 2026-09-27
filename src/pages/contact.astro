@@ -258,10 +258,13 @@ import Layout from '../layouts/Layout.astro';
     submitBtn.disabled = true;
     errorMsg?.classList.add('hidden');
 
+    const rawPhone = (document.getElementById('phone') as HTMLInputElement)?.value?.trim() || '';
+    const phone = rawPhone ? (rawPhone.startsWith("'") ? rawPhone : `'${rawPhone}`) : '';
+
     const data = {
       name:        (document.getElementById('name') as HTMLInputElement)?.value,
       email:       (document.getElementById('email') as HTMLInputElement)?.value,
-      phone:       (document.getElementById('phone') as HTMLInputElement)?.value,
+      phone:       phone,
       projectType: (document.getElementById('project_type') as HTMLSelectElement)?.value,
       timeline:    (document.getElementById('timeline') as HTMLInputElement)?.value,
       location:    (document.getElementById('location') as HTMLInputElement)?.value,
